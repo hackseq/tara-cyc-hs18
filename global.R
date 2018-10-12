@@ -3,7 +3,12 @@ library(readr)
 library(shiny)
 
 
-source('modules/map.R')
-source('modules/query.R')
+modules =list.files('modules',full.names = TRUE)
+
+
+for(module in modules){
+    source(module)
+}
+
 
 tara_data = read_tsv('df_MASTERTABLE.txt')
