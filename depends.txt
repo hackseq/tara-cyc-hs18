@@ -4,3 +4,5 @@ shiny
 leaflet
 DT
 magrittr
+httr
+jsonlite
