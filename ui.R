@@ -28,14 +28,25 @@ dashboardPage(
 
 ui <- dashboardPage(
     dashboardHeader(title = "TaraCyc"),
-    dashboardSidebar(),
+    dashboardSidebar(
+        sidebarMenu(
+            menuItem("Welcome", tabName = "welcome", icon = icon("dashboard")),
+            menuItem("Map", tabName = "map", icon = icon("th"))
+        )
+    ),
     dashboardBody(
-        fluidRow(query_ui('query')),
-        fluidRow(
-            box(
-                title = "Map", width = 12, status = "primary",
-                map_ui('map')
+        tabItems(
+            tabItem(tabName="welcome"),
+            
+            tabItem(tabName="map",
+                fluidRow(query_ui('query')),
+                fluidRow(
+                    box(
+                        title = "Map", width = 12, status = "primary",
+                        map_ui('map')
+                    )
                 )
             )
+        )
     )
 )
