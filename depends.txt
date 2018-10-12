@@ -2,3 +2,5 @@ dplyr
 readr
 shiny
 leaflet
+httr
+jsonlite
