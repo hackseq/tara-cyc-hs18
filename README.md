@@ -18,7 +18,11 @@ Mapping of metagenomic data:
 Website - Things to Include:
 Map - Use lat and long to map the 
 Leaflet - R package for maps - allows zooming functions
-Want query functions - by location - 
+Want query functions - by location
+If we can get dates - can add info on the temperature at the time of collection
+Map - want filters for depth
+Can pull up data for a sample/area - then filter by depth - show pathway information
+Analysis tab to compare different regions
 Link out to pathway information on MetaCyc
 
 gutcyc.com - similar initiative - gut microbiome
