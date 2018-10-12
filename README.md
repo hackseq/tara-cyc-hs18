@@ -34,3 +34,5 @@ R
 2. Open the project in R Studio
 3. Open the InstallDependencies.R script and run with "Source on Save" selected
 4. Open the server.R script and select "Run App"
+
+### Data Explanation
