@@ -16,5 +16,9 @@ Mapping of metagenomic data:
 
 
 Website - Things to Include:
-Map
+Map - Use lat and long to map the 
+Leaflet - R package for maps - allows zooming functions
+Want query functions - by location - 
 Link out to pathway information on MetaCyc
+
+gutcyc.com - similar initiative - gut microbiome
