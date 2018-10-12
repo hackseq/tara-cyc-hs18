@@ -26,3 +26,10 @@ Analysis tab to compare different regions
 Link out to pathway information on MetaCyc
 
 gutcyc.com - similar initiative - gut microbiome
+
+Task Divy Up:
+Analysis: Javier, Heather, Jasmine
+Map: Agan, Dan, Kristen, Olga, Arjun
+Reading: Kristen
+Shiny: Ogan, Olga
+Integration: Arjun
