@@ -8,13 +8,29 @@
 #
 
 library(shiny)
+library(shinydashboard)
 
 # Define UI for application that draws a histogram
-shinyUI(fluidPage(
+dashboardPage(
+  #Top bar
+  dashboardHeader(),
   
-  # Application title
-  titlePanel("Tara-Cyc"),
-  query_ui('query'),
-  map_ui('map')
- 
-))
+  dashboardSidebar(),
+  
+  dashboardBody(
+      # Application title
+      titlePanel("Tara-Cyc"),
+      query_ui('query'),
+      map_ui('map')
+  )
+
+)
+
+ui <- dashboardPage(
+    dashboardHeader(title = "TaraCyc"),
+    dashboardSidebar(),
+    dashboardBody(
+        fluidRow(query_ui('query')),
+        fluidRow(box(map_ui('map')))
+    )
+)

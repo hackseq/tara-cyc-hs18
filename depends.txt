@@ -6,3 +6,4 @@ DT
 magrittr
 httr
 jsonlite
+shinydashboard
