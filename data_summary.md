@@ -21,3 +21,16 @@ LAT LONG: coordinates
 
 BIOME: biome...
 
+
+TYPE: multi viral and non viral sampled together ]
+
+
+C batcerial
+
+
+
+single sample 
+
+different layers of pathways
+
+look for given pathway.
