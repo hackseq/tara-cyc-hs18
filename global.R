@@ -1,7 +1,9 @@
-library(dplyr)
-library(readr)
-library(shiny)
-library(leaflet)
+dependencies = readLines('depends.txt')
+
+for(depend in dependencies){
+    library(depend,character.only = TRUE)
+}
+
 
 modules =list.files('modules',full.names = TRUE)
 
