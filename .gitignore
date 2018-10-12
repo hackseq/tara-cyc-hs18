@@ -102,3 +102,7 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+.Rproj.user
+
+
+df_MASTERTABLE.txt
