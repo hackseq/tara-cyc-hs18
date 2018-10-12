@@ -31,6 +31,11 @@ ui <- dashboardPage(
     dashboardSidebar(),
     dashboardBody(
         fluidRow(query_ui('query')),
-        fluidRow(box(map_ui('map')))
+        fluidRow(
+            box(
+                title = "Map", width = 12, status = "primary",
+                map_ui('map')
+                )
+            )
     )
 )
