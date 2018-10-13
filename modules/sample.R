@@ -19,7 +19,7 @@ sample_server = function(input,output,session,mapChoice){
                      p(glue('LAT: {sample_subset$LAT[1]}')),
                      p(glue('LONG: {sample_subset$LONG[1]}')),
                      p(glue('Depth: {sample_subset$DEPTH[1]}')),
-                     p(glue('Depth: {sample_subset$BIOME[1]}')),
+                     p(glue('Biome: {sample_subset$BIOME[1]}')),
                      p(glue('Virus?: {sample_subset$virus[1]}')))
         }) -> tabs
 
