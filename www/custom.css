@@ -1,3 +1,11 @@
-.main-header .logo {
-    background-color: #36a98e;
+.skin-blue .main-header .logo {
+    background-color: #afccc7;
+}
+
+.skin-blue .main-header .navbar {
+    background-color: #afccc7;
+}
+
+.skin-blue .main-sidebar {
+    background-color: #a8937e;
 }
