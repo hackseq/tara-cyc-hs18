@@ -17,3 +17,7 @@
 .skin-blue .sidebar-menu>li.active>a, .skin-blue .sidebar-menu>li:hover>a {
     background: #70827f;
 }
+
+.welcomebox {
+    text-align: center;
+}
