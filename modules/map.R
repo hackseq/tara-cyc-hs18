@@ -21,12 +21,12 @@ map_server = function(input,output,session, query_table){
             
             setView(lng=12.491348, lat=41.902281 , zoom=4) %>% 
             addMarkers(lng = ~LONG,
-                       lat = ~LAT# ,
+                       lat = ~LAT ,
                        # popup = paste("sample: ", samples$SAMPLE, "<br/>",
                        #               "latitude: ", samples$LAT, "<br/>",
                        #               "longitude: ", samples$LONG, "<br/>",
                        #               "depth (m): ", samples$DEPTHM)
-                       )
+                       clusterOptions = markerClusterOptions())
             
         m
     })
