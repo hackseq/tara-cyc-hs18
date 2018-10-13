@@ -26,7 +26,8 @@ ui <- dashboardPage(
             tags$link(rel = "stylesheet", type = "text/css", href = "custom.css")
         ),
         tabItems(
-            tabItem(tabName="welcome"),
+            tabItem(tabName="welcome",
+                    welcome_ui()),
             
             tabItem(tabName="map",
                 h1('Map of Viral Metabolic Pathways'),
