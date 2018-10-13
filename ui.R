@@ -41,10 +41,10 @@ ui <- dashboardPage(
             
             tabItem(tabName="map",
                 h1('Map of Viral Metabolic Pathways'),
-                fluidRow(query_ui('query')),
                 fluidRow(
                     box(
-                        title="Controls", width = 12, status = "primary"
+                        title="Controls", width = 12, status = "primary",
+                        query_ui('query')
                     )
                 ),
                 fluidRow(
