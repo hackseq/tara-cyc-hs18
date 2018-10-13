@@ -45,29 +45,28 @@ query_ui = function(id){
     )
 }
 
-query_server = function(input,output,session, query_table){
+query_server = function(input,output,session,tara_data, query_table){
     observe({
-        #Ωbrowser()
-        filtered_df <- query_table()
-        if (!is.null(input$TYPE) & input$TYPE != "") {
+        filtered_df <- tara_data
+        if (!is.null(input$TYPE) && input$TYPE != "") {
             filtered_df <- filter(filtered_df, TYPE%in%(input$TYPE))
         }
-        if (!is.null(input$DEPTH)) {
+        if (!is.null(input$DEPTH) && (input$DEPTH!='')) {
             filtered_df <- filter(filtered_df, DEPTH%in%(input$DEPTH))
         }
-        if (!is.null(input$PWY_NAME) & input$PWY_NAME != "") {
+        if (!is.null(input$PWY_NAME) && input$PWY_NAME != "") {
             filtered_df <- filter(filtered_df, PWY_NAME%in%(input$PWY_NAME))
         }
-        if (!is.null(input$RPKM)) {
+        if (!is.null(input$RPKM) && (input$RPKM!='')) {
             filtered_df <- filter(filtered_df, RPKM <= max(input$RPKM) & RPKM >= min(input$RPKM))
         }
-        if (!is.null(input$SAMPLE) & input$SAMPLE != "") {
+        if (!is.null(input$SAMPLE) && input$SAMPLE != "") {
             filtered_df <- filter(filtered_df, SAMPLE%in%(input$SAMPLE))
         }
-        if (!is.null(input$GEOREGION) & input$GEOREGION != "") {
+        if (!is.null(input$GEOREGION) && input$GEOREGION != "") {
             filtered_df <- filter(filtered_df, GEOREGION%in%(input$GEOREGION))
         }
-        if (!is.null(input$DEPTHSlider)) {
+        if (!is.null(input$DEPTHSlider) && input$DEPTHSlider != '') {
             filtered_df <- filter(filtered_df, DEPTH <= max(input$DEPTHSlider) & DEPTH >= min(input$DEPTHSlider))
         }
         query_table(filtered_df)

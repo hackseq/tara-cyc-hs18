@@ -9,3 +9,4 @@ jsonlite
 shinydashboard
 glue
 mapedit
+sf

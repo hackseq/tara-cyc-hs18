@@ -8,7 +8,7 @@ map_ui = function(id){
 }
 
 map_server = function(input,output,session, query_table){
-    
+        
     map = reactive({
         df = query_table()
         # I have removed the sample from here as it places points on top of each other
@@ -17,26 +17,24 @@ map_server = function(input,output,session, query_table){
         
         # element ID is ifgnored always called map
         m <- leaflet(data = samples) %>%
-            addTiles() %>%
-            
+            addProviderTiles(providers$Esri.WorldImagery) %>% 
+            # addTiles() %>%
             setView(lng=12.491348, lat=41.902281 , zoom=6) %>% 
             addMarkers(lng = ~LONG,
                        lat = ~LAT ,
-                       clusterOptions = markerClusterOptions())
+                       clusterOptions = markerClusterOptions()) 
         
         m
     })
     
-    observe({
-        callModule(
-            editModEdit,
-            'map_edit',
-            map()
-        )
-    })
+    mapSelection = callModule(
+        editModEdit,
+        'map_edit',
+        map
+    )
     
     
-    out = reactive({
+    outSample = reactive({
         isolate({df = query_table()})
         
         if(!is.null(input$`map_edit-map_marker_click`)){
@@ -49,11 +47,39 @@ map_server = function(input,output,session, query_table){
     })
     
     outGroup = observeEvent(input$select_group,{
-        browser()
+        if(!is.null(mapSelection()$finished)){
+            
+        } else{
+            return(query_table)
+        }
+        query_table() %>% mutate(long = LONG, lat = LAT) %>% 
+            select(long,lat) %>%as.matrix %>% st_multipoint() ->multipoint
+        
+        toIntersect = st_sf(st_cast(st_sfc(multipoint), "POINT"), query_table(), crs=4326)
+        
+        # # make the coordinates a numeric matrix
+        # qk_mx <- data.matrix(quakes[,2:1])
+        # # convert the coordinates to a multipoint feature
+        # qk_mp <- st_multipoint(qk_mx)
+        # # convert the multipoint feature to sf
+        # qk_sf <- st_sf(st_cast(st_sfc(qk_mp), "POINT"), quakes, crs=4326)
+        
+        
+        
+        selection = mapSelection()$finished
+        intersection = st_intersection(selection, toIntersect)
+        
+        out = intersection[,names(query_table())]
+        
+        if(nrow(out) == 0){
+            return(query_table())
+        } else{
+            return(out)
+        }
     })
     
     # return selected coordinates
-    return(out)
+    return(list(outGroup = outGroup,outSample = outSample))
 }
 
 
@@ -61,20 +87,24 @@ map_server = function(input,output,session, query_table){
 editModEdit = function (input, output, session, leafmap, targetLayerId = NULL, 
                         sf = TRUE, record = FALSE, crs = 4326) 
 {
-    if (is.null(Find(function(cl) {
-        cl$method == "addDrawToolbar"
-    }, leafmap$x$calls))) {
-        leafmap <- leaflet.extras::addDrawToolbar(leafmap, targetGroup = targetLayerId, 
-                                                  polylineOptions = FALSE, 
-                                                  polygonOptions = leaflet.extras::drawPolygonOptions(repeatMode = TRUE), 
-                                                  circleOptions = FALSE, 
-                                                  rectangleOptions = leaflet.extras::drawRectangleOptions(repeatMode = TRUE), 
-                                                  markerOptions = FALSE, 
-                                                  circleMarkerOptions = FALSE, 
-                                                  editOptions = leaflet.extras::editToolbarOptions())
-    }
+
     output$map <- leaflet::renderLeaflet({
+        leafmap = leafmap()
+        if (is.null(Find(function(cl) {
+            cl$method == "addDrawToolbar"
+        }, leafmap$x$calls))) {
+            leafmap <- leaflet.extras::addDrawToolbar(leafmap, targetGroup = targetLayerId, 
+                                                      polylineOptions = FALSE, 
+                                                      polygonOptions = leaflet.extras::drawPolygonOptions(repeatMode = TRUE), 
+                                                      circleOptions = FALSE, 
+                                                      rectangleOptions = leaflet.extras::drawRectangleOptions(repeatMode = TRUE), 
+                                                      markerOptions = FALSE, 
+                                                      circleMarkerOptions = FALSE, 
+                                                      editOptions = leaflet.extras::editToolbarOptions())
+        }
+        
         leafmap
+        
     })
     featurelist <- reactiveValues(drawn = list(), edited_all = list(), 
                                   deleted_all = list(), finished = list())
@@ -142,11 +172,11 @@ editModEdit = function (input, output, session, leafmap, targetLayerId = NULL,
                     }
                     c(left, right)
                 }, action, init = NULL)
-                combine_list_of_sf(lapply(features, st_as_sf.geo_list, 
+                mapedit:::combine_list_of_sf(lapply(features, mapedit:::st_as_sf.geo_list, 
                                           crs = crs))
             })
             recorder <- lapply(recorder, function(evt) {
-                feature = st_as_sfc.geo_list(evt$feature, crs = crs)
+                feature = mapedit:::st_as_sfc.geo_list(evt$feature, crs = crs)
                 list(evt = evt$event, timestamp = evt$timestamp, 
                      feature = feature)
             })
