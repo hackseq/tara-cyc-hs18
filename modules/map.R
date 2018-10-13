@@ -13,7 +13,7 @@ map_server = function(input,output,session, query_table){
         df = query_table()
         # I have removed the sample from here as it places points on top of each other
         # resulting in no effect
-        samples = df %>% select(LAT, LONG, DEPTHM)  %>% unique
+        samples = df %>% select(LAT, LONG)  %>% unique
         
         
         m <- leaflet(data = samples) %>%
