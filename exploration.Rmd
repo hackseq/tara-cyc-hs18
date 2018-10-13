@@ -13,8 +13,9 @@ knitr::opts_chunk$set(echo = TRUE)
 ##Exploratory data analysis
 ```{r}
 suppressPackageStartupMessages(library(tidyverse))
+library(cowplot)
 
-dataset <- read.table("data/df_MASTERTABLE.txt", sep = "\t", header = TRUE) %>%
+dataset <- read.table("data/df_MASTERTABLE.txt", sep = "\t", header = TRUE)
 
 
 #Order depth factor for plotting
@@ -51,7 +52,9 @@ dataset %>%
                  colour = "white") + 
         scale_fill_gradient(low = "white",
         high = "darkblue") +
-        theme(axis.text.x = element_text(angle = 45, hjust = 1))
+        theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+        labs(x = "Pathway type",
+             y = "Ocean Layer")
 
 dataset %>%
     filter(DEPTH_OMZ != "MULTI") %>%
@@ -64,16 +67,56 @@ dataset %>%
 
 #Comparing pathways in different samples
 sample1 <- dataset %>%
-    filter(SAMPLE == "cenf")
+    filter(SAMPLE == "cenf") %>%
+    mutate(sample_id = as.factor(1))
 
 sample2 <- dataset %>%
-    filter(SAMPLE == "ERR599337")
+    filter(SAMPLE == "ERR599337") %>%
+    mutate(sample_id = as.factor(2))
 
+samples <- rbind(sample1, sample2) %>%
+    filter(RPKM != 0) %>%
+    arrange(RPKM)
+
+#Common pathways
 intersect(sample1$PWY_NAME, sample2$PWY_NAME)
 
+#Common pathways level2
 intersect(sample1$LEVEL2, sample2$LEVEL2)
 
+#common pathways level1 
 intersect(sample1$LEVEL1, sample2$LEVEL1)
 
+#plot pathway comparison
+theme_set(theme_cowplot(font_size=12)) # reduce default font size
+
+level1_p <- samples %>%
+    ggplot(aes(fct_reorder(LEVEL1, RPKM, .desc = TRUE), as.character(sample_id))) + 
+       geom_tile(aes(fill = log(RPKM)), colour = "white") + 
+       scale_fill_gradient(low = "white", high = "steelblue") +
+       labs(x = "Pathway", y = "Group") +
+       theme_classic() +
+       theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+level2_p <- samples %>%
+    ggplot(aes(fct_reorder(LEVEL2, RPKM, .desc = TRUE), as.character(sample_id))) + 
+       geom_tile(aes(fill = log(RPKM)), colour = "white") + 
+       scale_fill_gradient(low = "white", high = "steelblue") +
+       labs(x = "Pathway", y = "Group") +
+       theme_classic() +
+       theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 10)) 
+
+level3_p <- samples %>%
+    ggplot(aes(fct_reorder(LEVEL3, RPKM, .desc = TRUE), as.character(sample_id))) + 
+       geom_tile(aes(fill = log(RPKM)), colour = "white") + 
+       scale_fill_gradient(low = "white", high = "steelblue") +
+       labs(x = "Pathway", y = "Group") +
+       theme_classic() +
+       theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 5)) 
+
+
+
+
 ```
+
 
