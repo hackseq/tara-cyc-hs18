@@ -14,17 +14,17 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 suppressPackageStartupMessages(library(tidyverse))
 
-dataset <- read_tsv("df_MASTERTABLE.txt") %>%
-  group_by(SAMPLE) %>%
-  mutate(n_samples = n())
+dataset <- read.table("data/df_MASTERTABLE.txt", sep = "\t", header = TRUE) %>%
+
+
+#Order depth factor for plotting
+dataset$DEPTH <- factor(dataset$DEPTH, levels = c("MULTI","MES","DCM","MIX", "SRF"))
 
 n_distinct(dataset$SAMPLE) #total number of samples
 
-
-
 #Depth vs region
 dataset %>%
-  ggplot(aes(GEOREGION, DEPTHM)) +
+  ggplot(aes(GEOREGION, as.integer(DEPTHM))) +
   geom_point() +
   theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
   scale_y_reverse()
@@ -37,6 +37,43 @@ dataset %>%
   group_by(LOC) %>%
   summarize(samples_per_loc = n_distinct(SAMPLE))
 
+#Play around with one sample
+cenf <- filter(dataset, SAMPLE == "cenf")
+
+#Check OMZ depths
+filter(dataset, DEPTH_OMZ == "OMZ") %>% select(DEPTHM, DEPTH_OMZ, DEPTH)
+
+#Depth heatmap
+dataset %>%
+    filter(DEPTH_OMZ != "MULTI") %>%
+    ggplot(aes(LEVEL1, DEPTH)) + 
+       geom_tile(aes(fill = log(RPKM)), 
+                 colour = "white") + 
+        scale_fill_gradient(low = "white",
+        high = "darkblue") +
+        theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+dataset %>%
+    filter(DEPTH_OMZ != "MULTI") %>%
+    ggplot(aes(LEVEL2, DEPTH)) + 
+       geom_tile(aes(fill = log(RPKM)), 
+                 colour = "white") + 
+        scale_fill_gradient(low = "white",
+        high = "darkblue") +
+        theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+#Comparing pathways in different samples
+sample1 <- dataset %>%
+    filter(SAMPLE == "cenf")
+
+sample2 <- dataset %>%
+    filter(SAMPLE == "ERR599337")
+
+intersect(sample1$PWY_NAME, sample2$PWY_NAME)
+
+intersect(sample1$LEVEL2, sample2$LEVEL2)
+
+intersect(sample1$LEVEL1, sample2$LEVEL1)
 
 ```
 
