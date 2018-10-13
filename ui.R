@@ -27,7 +27,7 @@ dashboardPage(
 )
 
 ui <- dashboardPage(
-    dashboardHeader(title = "TaraCyc"),
+    dashboardHeader(title = "TaraCyc Viral Voyager"),
     dashboardSidebar(
         sidebarMenu(
             menuItem("Welcome", tabName = "welcome", icon = icon("home")),
