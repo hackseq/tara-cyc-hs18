@@ -11,7 +11,7 @@ library(shiny)
 library(shinydashboard)
 
 ui <- dashboardPage(
-    dashboardHeader(disable = TRUE),
+    dashboardHeader(title = "TaraCyc Viral Voyager"),
     dashboardSidebar(
         sidebarMenu(
             menuItem("Welcome", tabName = "welcome", icon = icon("home")),
