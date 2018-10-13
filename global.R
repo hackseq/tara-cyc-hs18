@@ -13,4 +13,4 @@ for(module in modules){
 }
 
 
-tara_data = read_tsv('df_MASTERTABLE.txt')
+tara_data = read_rds('tara_data.rds')
