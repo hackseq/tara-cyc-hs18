@@ -15,6 +15,8 @@ shinyServer(function(input, output) {
     
     callModule(query_server,'query',query_table)
     
-    callModule(map_server,'map', query_table)
+    mapChoice = callModule(map_server,'map', query_table)
+    
+    callModule(sample_server,'sample',mapChoice)
   
 })

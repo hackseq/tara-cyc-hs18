@@ -52,6 +52,12 @@ ui <- dashboardPage(
                         width = 12, status = "primary",
                         map_ui('map')
                     )
+                ),
+                fluidRow(
+                    box(
+                        width = 12,
+                        sample_ui('sample')
+                    )
                 )
             ),
             
