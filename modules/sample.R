@@ -44,6 +44,8 @@ sample_server = function(input,output,session,mapChoice){
     }, selection = list(mode= 'single',target = 'row'))
     
     
+    # this part waits for the user to click a row in the data table and shows
+    # the TaraCyc representation of the pathway
     observe({
         pathName = table_frame()[input$sample_datatable_rows_selected,]$PWY_NAME
         pathPeasantName = table_frame()[input$sample_datatable_rows_selected,]$PWY_COMMON_NAME
