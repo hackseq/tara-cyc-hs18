@@ -10,24 +10,8 @@
 library(shiny)
 library(shinydashboard)
 
-# Define UI for application that draws a histogram
-dashboardPage(
-  #Top bar
-  dashboardHeader(),
-  
-  dashboardSidebar(),
-  
-  dashboardBody(
-      # Application title
-      titlePanel("Tara-Cyc"),
-      query_ui('query'),
-      map_ui('map')
-  )
-
-)
-
 ui <- dashboardPage(
-    dashboardHeader(title = "TaraCyc"),
+    dashboardHeader(title = "TaraCyc Viral Voyager"),
     dashboardSidebar(
         sidebarMenu(
             menuItem("Welcome", tabName = "welcome", icon = icon("home")),
@@ -38,6 +22,9 @@ ui <- dashboardPage(
         )
     ),
     dashboardBody(
+        tags$head(
+            tags$link(rel = "stylesheet", type = "text/css", href = "custom.css")
+        ),
         tabItems(
             tabItem(tabName="welcome"),
             
@@ -45,19 +32,19 @@ ui <- dashboardPage(
                 h1('Map of Viral Metabolic Pathways'),
                 fluidRow(
                     box(
-                        title="Controls", width = 12, status = "primary",
+                        title="Controls", width = 12, solidHeader = TRUE,
                         query_ui('query')
                     )
                 ),
                 fluidRow(
                     box(
-                        width = 12, status = "primary",
+                        width = 12, solidHeader = TRUE,
                         map_ui('map')
                     )
                 ),
                 fluidRow(
                     box(
-                        title="Sample Information", width = 12,
+                        title="Sample Information", width = 12, solidHeader = TRUE,
                         sample_ui('sample')
                     )
                 )
