@@ -30,8 +30,9 @@ ui <- dashboardPage(
     dashboardHeader(title = "TaraCyc"),
     dashboardSidebar(
         sidebarMenu(
-            menuItem("Welcome", tabName = "welcome", icon = icon("dashboard")),
-            menuItem("Map", tabName = "map", icon = icon("th"))
+            menuItem("Welcome", tabName = "welcome", icon = icon("home")),
+            menuItem("Map", tabName = "map", icon = icon("globe")),
+            menuItem("Analysis", tabName = "analysis", icon = icon("flask"))
         )
     ),
     dashboardBody(
@@ -39,14 +40,22 @@ ui <- dashboardPage(
             tabItem(tabName="welcome"),
             
             tabItem(tabName="map",
+                h2('Map of Viral Metabolic Pathways'),
                 fluidRow(query_ui('query')),
                 fluidRow(
                     box(
-                        title = "Map", width = 12, status = "primary",
+                        title="Controls", width = 12, status = "primary"
+                    )
+                ),
+                fluidRow(
+                    box(
+                        width = 12, status = "primary",
                         map_ui('map')
                     )
                 )
-            )
+            ),
+            
+            tabItem(tabName="analysis")
         )
     )
 )
