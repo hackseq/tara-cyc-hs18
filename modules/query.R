@@ -51,13 +51,13 @@ query_server = function(input,output,session,tara_data, query_table){
         if (!is.null(input$TYPE) && input$TYPE != "") {
             filtered_df <- filter(filtered_df, TYPE%in%(input$TYPE))
         }
-        if (!is.null(input$DEPTH)) {
+        if (!is.null(input$DEPTH) && (input$DEPTH!='')) {
             filtered_df <- filter(filtered_df, DEPTH%in%(input$DEPTH))
         }
         if (!is.null(input$PWY_NAME) && input$PWY_NAME != "") {
             filtered_df <- filter(filtered_df, PWY_NAME%in%(input$PWY_NAME))
         }
-        if (!is.null(input$RPKM)) {
+        if (!is.null(input$RPKM) && (input$RPKM!='')) {
             filtered_df <- filter(filtered_df, RPKM <= max(input$RPKM) & RPKM >= min(input$RPKM))
         }
         if (!is.null(input$SAMPLE) && input$SAMPLE != "") {

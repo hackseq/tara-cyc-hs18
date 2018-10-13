@@ -16,7 +16,9 @@ ui <- dashboardPage(
         sidebarMenu(
             menuItem("Welcome", tabName = "welcome", icon = icon("home")),
             menuItem("Map", tabName = "map", icon = icon("globe")),
-            menuItem("Analysis", tabName = "analysis", icon = icon("flask"))
+            menuItem("Analysis", tabName = "analysis", icon = icon("flask")),
+            menuItem("Future Directions", tabName = "futuredirections", icon = icon("arrow-circle-right")),
+            menuItem("Team Members", tabName = "members", icon = icon("user-circle-o"))
         )
     ),
     dashboardBody(
@@ -48,7 +50,15 @@ ui <- dashboardPage(
                 )
             ),
             
-            tabItem(tabName="analysis")
+            tabItem(tabName="analysis"),
+            
+            tabItem(tabName="futuredirections"),
+            
+            tabItem(tabName="members"
+                     
+            )
+            
+        
         )
     )
 )
