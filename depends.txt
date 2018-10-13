@@ -8,3 +8,4 @@ httr
 jsonlite
 shinydashboard
 glue
+mapedit
