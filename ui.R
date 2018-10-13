@@ -19,7 +19,7 @@ dashboardPage(
   
   dashboardBody(
       # Application title
-      titlePanel("Tara-Cyc"),
+      titlePanel("TaraCyc Viral Voyager"),
       query_ui('query'),
       map_ui('map')
   )
