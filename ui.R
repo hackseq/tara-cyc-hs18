@@ -19,7 +19,7 @@ dashboardPage(
   
   dashboardBody(
       # Application title
-      titlePanel("Tara-Cyc"),
+      titlePanel("TaraCyc Viral Voyager"),
       query_ui('query'),
       map_ui('map')
   )
@@ -27,7 +27,7 @@ dashboardPage(
 )
 
 ui <- dashboardPage(
-    dashboardHeader(title = "TaraCyc"),
+    dashboardHeader(title = "TaraCyc Viral Voyager"),
     dashboardSidebar(
         sidebarMenu(
             menuItem("Welcome", tabName = "welcome", icon = icon("home")),
