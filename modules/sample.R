@@ -50,11 +50,12 @@ sample_server = function(input,output,session,mapChoice){
         pathName = table_frame()[input$sample_datatable_rows_selected,]$PWY_NAME
         pathPeasantName = table_frame()[input$sample_datatable_rows_selected,]$PWY_COMMON_NAME
         giflink = glue('https://biocyc.org/tmp/ptools-images/META/{pathName}_PWY-DIAGRAM.gif')
-        if(length(giflink)==1){
+        if(length(giflink)==1 && !is.na(pathName)){
             showModal(
                 modalDialog(title=pathPeasantName,
-                            img(src = giflink),
-                            easyClose = TRUE)
+                            HTML(glue('<center><img src="{giflink}"></center>')),
+                            easyClose = TRUE,
+                            size = 'l')
             )
         }
     })
