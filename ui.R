@@ -55,7 +55,7 @@ ui <- dashboardPage(
                 ),
                 fluidRow(
                     box(
-                        width = 12,
+                        title="Sample Information", width = 12,
                         sample_ui('sample')
                     )
                 )
