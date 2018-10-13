@@ -1,35 +1,4 @@
 
-# trimNAs = function (vect) {
-#     return(vect[!is.na(vect)])
-# }
-# 
-# hierarchize = function(levels,design){
-#     design %<>% as.data.frame()
-#     
-#     out = vector(mode = 'list', length = length(unique(design[levels[1]]) %>% trimNAs))
-#     
-#     out = lapply(out,function(x){structure('',stselected = TRUE)})
-#     names(out) = unique(design[levels[1]]) %>% trimNAs %>% sort
-#     
-#     if ((length(levels)>1) & (nrow(design)>0)){
-#         out = lapply(names(out),function(x){
-#             hierarchize(levels[-1] ,design[design[,levels[1]] %in% x,])
-#         })
-#         names(out) = unique(design[levels[1]]) %>% trimNAs() %>% sort
-#         for(i in 1:length(out)){
-#             if (length(out[[i]])==1 && names(out[[i]]) == names(out[i])){
-#                 out[[i]] = structure('',stselected = TRUE)}
-#         }
-#     }
-#     return(out)
-# }
-
-
-# hierarchize(c('LEVEL1','LEVEL2','LEVEL3'),df)
-
-
-# https://biocyc.org/tmp/ptools-images/META/BETSYN-PWY_PWY-DIAGRAM.gif
-
 sample_ui = function(id){
     ns = NS(id)
     tagList(
