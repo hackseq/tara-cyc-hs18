@@ -78,9 +78,10 @@ ui <- dashboardPage(
             tabItem(tabName="members", h1('Meet the Team'), 
                     fluidPage(theme = shinytheme("yeti"),
                         flowLayout(
-                        img(src ="arjun.jpg", width="150", height="150", style="border-radius:50%" ),
-                        
-                        img(src ="dan.jpg", width="150", height="150", style="border-radius:50%"),
+                        wellPanel(img(src ="arjun.jpg", width="150", height="150", style="border-radius:50%", alt="Arjun Baghela", text="Arjun" ),
+                        p("Anjan")
+                        ),
+                        img(src ="dan.jpg", width="150", height="150", style="border-radius:50%",  alt="Dan"),
                         img(src ="kristen.jpg", width="150", height="150", style="border-radius:50%"),
                         img(src ="jasmine.jpg", width="150", height="150", style="border-radius:50%"),
                         img(src ="tony.jpg", width="150", height="150", style="border-radius:50%"),
