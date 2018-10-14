@@ -10,7 +10,8 @@
 library(shiny)
 library(shinydashboard)
 library(shinythemes)
-#library("leaflet")
+
+
 
 ui <- dashboardPage(
     dashboardHeader(tags$li(img(src = 'tara_logo.png',
@@ -118,7 +119,7 @@ ui <- dashboardPage(
                             
                             wellPanel(img(src ="Olga.jpg", width="130", height="150", style="border-radius:50%"),
                                       tags$br(), tags$strong("Olga Solodova"), tags$br(""),
-                                      icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/ ", "??")
+                                      icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/solodova", "solodova")
                             ),
                             
                             
