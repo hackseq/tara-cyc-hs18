@@ -44,6 +44,23 @@ plot_ly(sample_geo,
 pwy <- group_by(df, LEVEL1, LEVEL2, LEVEL3)
 plot_ly(pwy, x = pwy$LEVEL1,
         type = 'histogram')
+
+rpkmfilter <- filter(df, RPKM > 0)
+filter_coastal <- filter(rpkmfilter, BIOME == "Coastal Biome")
+filter_multi <- filter(rpkmfilter, BIOME == "MULTI")
+filter_polar <- filter(rpkmfilter, BIOME == "Polar Biome")
+filter_trades <- filter(rpkmfilter, BIOME == "Trades Biome")
+filter_westerlies <- filter(rpkmfilter, BIOME == "Westerlies Biome")
+
+plot_ly(rpkmfilter, x = ~LEVEL1, type = "histogram") %>% layout(title = "Frequency of Level 1 Pathways in all biomes")
+
+p1 <- plot_ly(filter_coastal, x = ~LEVEL1, type = "histogram", name ="Coastal") %>% layout(title = "Frequency of Level 1 Pathways in the Coastal Biome")
+p2 <- plot_ly(filter_polar, x = ~LEVEL1, type = "histogram", name ="Polar") %>% layout(title = "Frequency of Level 1 Pathways in the Polar Biome")
+p3 <- plot_ly(filter_trades, x = ~LEVEL1, type = "histogram", name ="Trades") %>% layout(title = "Frequency of Level 1 Pathways in the Trades Biome")
+p4 <- plot_ly(filter_westerlies, x = ~LEVEL1, type = "histogram", name ="Westerlies") %>% layout(title = "Frequency of Level 1 Pathways in the Westerlies Biome")
+
+subplot(p1, p2, p3, p4, nrows = 1, shareX = TRUE, shareY = TRUE) %>% layout(title = "Frequencies of Level 1 Pathways in the 4 Biomes")
+
 plot_ly(pwy, x = pwy$LEVEL3,
         type = 'histogram')
 ```
@@ -52,4 +69,9 @@ plot_ly(pwy, x = pwy$LEVEL3,
 biome <- group_by(df,BIOME) %>% 
     summarise(total = mean(RPKM))
 ```
+
+```{r}
+
+```
+
 
