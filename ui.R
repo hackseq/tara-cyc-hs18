@@ -30,9 +30,10 @@ ui <- dashboardPage(
         ),
         tabItems(
             tabItem(tabName="welcome",
-                    welcome_ui(),
-                    img(src = "tara_logo.png", height="140", width="140", align="middle")),
-            
+                    HTML('<center><img src = "tara_logo.png", height="240", width="240"></center>'),
+                    welcome_ui()),
+                    #img(src = "tara_logo.png", height="80", width="80", align="middle")),
+                    
             tabItem(tabName="map",
                 h1('Map of Viral Metabolic Pathways'),
                 fluidRow(
@@ -78,20 +79,23 @@ ui <- dashboardPage(
             tabItem(tabName="members", h1('Meet the Team'), 
                     fluidPage(theme = shinytheme("yeti"),
                         flowLayout(
+                        wellPanel(img(src ="arjun.jpg", width="150", height="150", style="border-radius:50%", alt="Arjun Baghela", text="Arjun" ),
+                        p("Anjan")
+                        ),
+                        img(src ="dan.jpg", width="150", height="150", style="border-radius:50%",  alt="Dan"),
+                        img(src ="kristen.jpg", width="150", height="150", style="border-radius:50%"),
+                        img(src ="jasmine.jpg", width="150", height="150", style="border-radius:50%"),
+                        img(src ="tony.jpg", width="150", height="150", style="border-radius:50%"),
                         
-                          
+                        
+                        
+                        
                         #titlePanel("example"),
                         wellPanel("example"),
                        #load.image(https://hackseq18.slack.com/files/UD6SDLFNH/FDD10G6M6/image_from_ios.jpg),
                        wellPanel("example"),
-                       wellPanel("example"),
-                       wellPanel("example"),
-                       wellPanel("example"),
-                       wellPanel("example"),
-                       wellPanel("example"),
-                       wellPanel("example"),
-                       wellPanel("example"),
-                       wellPanel("example"),
+            
+            
                        wellPanel("example")
                        
                         
