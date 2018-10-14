@@ -84,6 +84,7 @@ ui <- dashboardPage(
             tabItem(tabName="members", h1('Meet the Team'), 
                     fluidPage(theme = shinytheme("yeti"),
                         flowLayout(
+                            
                         wellPanel(img(src ="arjun.jpg", width="150", height="150", style="border-radius:50%"),
                             p("Arjun Baghela "),
                             icon(name="twitter", class = NULL, lib = "font-awesome"), p("Arjun's twitter"),
@@ -92,18 +93,34 @@ ui <- dashboardPage(
                         ),
                         
                         
+                        wellPanel(img(src ="ogan.jpg", width="150", height="150", style="border-radius:50%"),
+                                  p("Burak Ogan Mancarci"),
+                                  icon(name="github", class = NULL, lib = "font-awesome"), p("oganm")
+                        ),
                         
-                        wellPanel(img(src ="dan.jpg", width="150", height="150", style="border-radius:50%",  alt="Dan")
+                        
+                        wellPanel(img(src ="dan.jpg", width="150", height="150", style="border-radius:50%",  alt="Dan", p("Dan Fornika")),
+                                  icon(name="github", class = NULL, lib = "font-awesome"), p("dfornika") 
                         ),
                         
                         
   
                         wellPanel(img(src ="kristen.jpg", width="150", height="150", style="border-radius:50%"),
-                        p("Kristen Grey"),
+                        p("Kristen Gray"),
                         
                         icon(name="twitter", class = NULL, lib = "font-awesome"), p("@agrayowl"),
-                        
                         icon(name="github", class = NULL, lib = "font-awesome"), p("klgray25")
+                        ),
+                        
+                        wellPanel(img(src ="Olga.jpg", width="130", height="150", style="border-radius:50%"),
+                                  p("Olga Solodova"),
+                                  icon(name="github", class = NULL, lib = "font-awesome"), p("  ?  ")
+                        ),
+                        
+                        
+                        wellPanel(img(src ="javier.jpg", width="150", height="150", style="border-radius:50%"),
+                                  p("Javier J. Castillo Arnemann"),
+                                  icon(name="github", class = NULL, lib = "font-awesome"), p("yavyx")
                         ),
                         
                         wellPanel(img(src ="jasmine.jpg", width="150", height="150", style="border-radius:50%"),
@@ -118,19 +135,29 @@ ui <- dashboardPage(
                         ),
                         
                         
-                        wellPanel(img(src ="heather head shot.jpg", width="150", height="150", style="border-radius:50%")
-                                  
+                        wellPanel(img(src ="heather head shot.jpg", width="150", height="150", style="border-radius:50%"),
+                                  p("Heather Van Tassel"),
+                                  icon(name="github", class = NULL, lib = "font-awesome"), p("heathervant")   
+                        ),
+                        
+                        wellPanel(img(src ="amyworkID_pic.jpg", width="120", height="150", style="border-radius:50%"),
+                                  p("Amy Zheng"),
+                                  icon(name="github", class = NULL, lib = "font-awesome"), p("awlzhng")  
                         ),
                         
                         
+                        wellPanel(img(src ="kevin.JPG", width="150", height="150", style="border-radius:50%"),
+                                  p("Kevin Lam"),
+                                  icon(name="github", class = NULL, lib = "font-awesome"), p("KlamChowder1") 
+                        )
+                        
                         
                         #titlePanel("example"),
-                        wellPanel("example"),
+               
                        #load.image(https://hackseq18.slack.com/files/UD6SDLFNH/FDD10G6M6/image_from_ios.jpg),
-                       wellPanel("example"),
+                    
             
-            
-                       wellPanel("example")
+        
                        
                         
                         )
