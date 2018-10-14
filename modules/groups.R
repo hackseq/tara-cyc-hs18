@@ -3,9 +3,7 @@ group_ui = function(id){
     tagList(
         checkboxGroupInput(ns('group_checkbox'),
                            label = 'Groups'),
-        actionButton(ns('remove'),'Remove Selected', width = 200),
-        actionButton(ns('download'), 'Download Raw Data', width = 200)
-        
+        actionButton(ns('remove'),'Remove Selected', width = 200)
     )
 }
 
