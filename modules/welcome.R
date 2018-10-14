@@ -4,7 +4,9 @@ welcome_ui = function(){
              HTML('<br><br>'),
              tags$p(
                  tags$h3('Viral Voyager is a website that shows a large-scale mapping of analysed 
-                         metaviriome data collected from the Tara Oceans Project.')),
+                         metaviriome data collected from the Tara Oceans Project.'),
+                 tags$h5(
+                     tags$a(href="http://ocean-microbiome.embl.de/companion.html", "Tara Oceans website"))),
              
              tags$p(
                  tags$h3('The Tara Oceans Project collected water samples data worldwide for 
