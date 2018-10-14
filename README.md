@@ -1,14 +1,12 @@
 # TaraCyc
 
-TaraCyc contains the first ever large-scale mapping of viral metabolomics data collected from ocean environments around the world. The Tara Oceans Project travelled worldwide collecting water samples for shotgun metagenomic sequencing. This genomic data has been mapped to metabolomic pathways. Recently, viruses have been shown to encode proteins that interact with host metabolic pathways in ways not previously explored, such as the BLANK virus that promoted photosynthetic activity in infected cyanobacteria in order to promote cellular growth and support viral dissemination (REFEReNCE).
+TaraCyc contains the first ever large-scale mapping of viral metabolomics data collected from ocean environments around the world. The Tara Oceans Project travelled worldwide collecting water samples for shotgun metagenomic sequencing. This genomic data has been mapped to metabolomic pathways. Recently, viruses have been shown to encode proteins that interact with host metabolic pathways in ways not previously explored, such as a set of cyanophage that modified photosynthetic activity in infected cyanobacteria in order to promote viral replication [Thompson et al](http://www.pnas.org/content/pnas/108/39/E757.full.pdf).
 
 The TaraCyc website contains all of this analysed metaviriome data with an interactive, user-friendly interface. The website can be accessed at: LINK.
 
 ## Website Use
 
-The main page contains an interactive map with filtering options to visulaize the distribution of viral samples and the data associated with them. Navigate to the BLANK pages to view BLANK.
-
-INSERT explanation of filtering options.
+The Map page contains an interactive map with filtering options to visulaize the distribution of viral samples and the data associated with them. Filtered dataset can also be saved for analysis. The Analysis page allows options for analysing the the groups generated on the map page. Users can generate heatmaps, BLANK.
 
 ## Source Code Information
 
@@ -27,6 +25,13 @@ R
 - httr
 - jsonlite
 - shinydashboard
+- glue
+- mapedit
+- sf
+- reshape2
+- tibble
+- pheatmap
+- shinythemes
 
 ### Installation Instructions:
 
