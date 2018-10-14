@@ -3,8 +3,7 @@ group_ui = function(id){
     tagList(
         checkboxGroupInput(ns('group_checkbox'),
                            label = 'Groups'),
-        actionButton(ns('remove'),'Remove selected')
-        
+        actionButton(ns('remove'),'Remove Selected', width = 200)
     )
 }
 
@@ -55,7 +54,6 @@ group_server = function(input,output,session,mapSelection,tableSelection,map_or_
         # remove selected groups on button press
         groups(groups()[!names(groups()) %in% input$group_checkbox])
     })
-    
     
     selectedGroups = reactive({
         groups()[input$group_checkbox]

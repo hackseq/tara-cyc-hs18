@@ -19,5 +19,7 @@ shinyServer(function(input, output,session) {
     
     callModule(test_analysis_server, 'tana',groups)
     
+    callModule(clustering_server, 'clustering', groups)
+    
 
 })

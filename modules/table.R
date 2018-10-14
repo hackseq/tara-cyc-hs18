@@ -1,18 +1,34 @@
 table_ui = function(id){
     ns = NS(id)
     tagList(
-        actionButton(ns('select_group'),icon = icon('save'), label = 'Select Group'),
-        textInput(ns('group_name'), label = 'Name Group',width = 200),
+        fluidRow(
+            column(6,
+                   div(style="display:inline-block", actionButton(ns('select_group'),icon = icon('save'), label = 'Select Group')),
+                   div(style="display:inline-block", textInput(ns('group_name'), label = 'Name Group',width = 200))
+            ),
+            column(4),
+            column(2,downloadButton(style = "display:inline-block float:right",outputId = ns('data_down'),label = 'Download Selection'))),
         DT::dataTableOutput(ns('query_dt'))
     )
 }
 
 table_server = function(input,output,session, query_table){
     
+    
+    downloadPress = reactiveVal(value = 0)
+    
+    output$data_down = downloadHandler(
+        filename = 'voyagerdata.tsv',
+        content = function(file){
+            downloadPress(downloadPress()+1)
+            write_tsv(outGroup()$subset,file)
+        }
+    )
+    
     output$query_dt = DT::renderDataTable({
         df = query_table()
         
-        samples = df %>% select(SAMPLE,TYPE,DEPTH,LAT,LONG,BIOME,GEOREGION,virus) %>% unique
+        samples = df %>% select(SAMPLE,TYPE,DEPTH,LAT,LONG,BIOME,GEOREGION,salinity,temperature,date_collected,virus) %>% unique
     })
     
     outSample = reactive({
@@ -24,8 +40,7 @@ table_server = function(input,output,session, query_table){
     })
     
     outGroup = reactive({
-
-        if(input$select_group >= 1 ){
+        if(input$select_group >= 1 | downloadPress()>=1){
             isolate({
                 df = query_table()
                 if(!is.null(input$query_dt_rows_selected)){
@@ -49,6 +64,14 @@ table_server = function(input,output,session, query_table){
         }
     })
     
-    return(list(group = outGroup,sample = outSample))
+    sendGroupOut = reactive({
+        if(input$select_group >= 1){
+            isolate({
+                outGroup()
+            })
+        }
+    })
+    
+    return(list(group = sendGroupOut,sample = outSample))
     
 }
