@@ -27,18 +27,29 @@ test_analysis_server = function(input,output,session,groups){
                     })
             })
             
-            # the existing of 0s are not universal so some common ground is found.
-            # correct thing to do would be to fill the missing parts with zeroes
-            # but here I am taking an intersection
+
             commonPaths = intersect(rownames(gr[[1]]),rownames(gr[[2]]))
+            exclusiveInG1 = rownames(gr[[1]])[!rownames(gr[[1]]) %in% rownames(gr[[2]])]
+            exclusiveInG2 = rownames(gr[[2]])[!rownames(gr[[2]]) %in% rownames(gr[[1]])]
+            
+            dummyG1 = matrix(0,ncol = ncol(gr[[1]]),nrow = length(exclusiveInG2)) %>% as.data.frame()
+            rownames(dummyG1) = exclusiveInG2
+            colnames(dummyG1) = colnames(gr[[1]])
+            
+            dummyG2 = matrix(0,ncol = ncol(gr[[2]]),nrow = length(exclusiveInG1)) %>% as.data.frame
+            rownames(dummyG2) = exclusiveInG1
+            colnames(dummyG2) = colnames(gr[[2]])
+            gr[[1]] = rbind(gr[[1]],dummyG1)
+            gr[[2]] = rbind(gr[[2]],dummyG2)
+            
             
             gr %<>% lapply(function(x){
-                x[commonPaths,]
+                x[c(commonPaths,exclusiveInG1,exclusiveInG2),]
             })
             
             # here I do a simple wilcox test to get the most DE pathways.
-            testRes = commonPaths %>% sapply(function(x){
-                test = suppressWarnings(wilcox.test(gr[[1]][x,],gr[[2]][x,]))
+            testRes = rownames(gr[[1]]) %>% sapply(function(x){
+                test = suppressWarnings(wilcox.test(gr[[1]][x,] %>% unlist,gr[[2]][x,] %>% unlist))
                 p = test$p.value
                 return(p)
             }) %>% p.adjust(method = 'fdr')

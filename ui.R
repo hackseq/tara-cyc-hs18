@@ -13,7 +13,10 @@ library(shinythemes)
 #library("leaflet")
 
 ui <- dashboardPage(
-    dashboardHeader(title = "TaraCyc Viral Voyager"),
+    dashboardHeader(tags$li(img(src = 'tara_logo.png',
+                                  title = "Company Home", height = "30px"),
+                              style = "padding-top:10px; padding-bottom:10px;", class="dropdown"),
+                            title = "Viral Voyager"),
     dashboardSidebar(
         sidebarMenu(
             menuItem("Welcome", tabName = "welcome", icon = icon("home")),
@@ -67,7 +70,9 @@ ui <- dashboardPage(
             tabItem(tabName="analysis",
                     tabsetPanel(
                         tabPanel('Test Analysis',
-                                 test_analysis_ui('tana'))
+                                 test_analysis_ui('tana')),
+                        tabPanel('Clustering',
+                                 clustering_ui('clustering'))
                     )),
             
             tabItem(tabName="futuredirections",
