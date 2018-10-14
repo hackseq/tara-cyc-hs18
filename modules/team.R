@@ -53,7 +53,7 @@ team_ui = function(){
                       
                       wellPanel(img(src ="tony.jpg", width="150", height="150", style="border-radius:50%"),
                                 tags$strong("Tony Shen"), tags$br(),
-                                icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/ ", " ??")
+                                icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/tsa87 ", "tsa87")
                       ),
                       
                       
