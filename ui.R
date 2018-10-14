@@ -14,10 +14,7 @@ library(shinythemes)
 
 
 ui <- dashboardPage(
-    dashboardHeader(tags$li(img(src = 'tara_logo.png',
-                                  title = "Company Home", height = "30px"),
-                              style = "padding-top:10px; padding-bottom:10px;", class="dropdown"),
-                            title = "Viral Voyager"),
+    dashboardHeader(title = HTML('<center><img src = "tara_logo.png", height="40", width="40">Viral Voyager</center>')),
     dashboardSidebar(
         sidebarMenu(
             menuItem("Welcome", tabName = "welcome", icon = icon("home")),
@@ -86,7 +83,6 @@ ui <- dashboardPage(
                     fluidPage(theme = shinytheme("yeti"),
                         flowLayout(
                             
-                            
                             wellPanel(img(src ="arjun.jpg", width="150", height="150", style="border-radius:50%"),
                                       tags$strong("Arjun Baghela"), 
                                       
@@ -98,7 +94,9 @@ ui <- dashboardPage(
                             
                             
                             wellPanel(img(src ="ogan.jpg", width="150", height="150", style="border-radius:50%"),
-                                      tags$strong("Burak Ogan Mancarci"),
+                                      p("B. Ogan Mancarci"),
+                                      icon(name = 'twitter',class = NULL, lib = 'font-awesome'),tags$a(href="https://twitter.com/OganM", "@oganm"),
+                                      br(),
                                       icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/oganm", "oganm")
                             ),
                             
@@ -155,7 +153,7 @@ ui <- dashboardPage(
                                       tags$strong("Kevin Lam"),
                                       tags$br(),icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/KlamChowder1", "KlamChowder1") 
                             )
-                        
+
                         
                         #titlePanel("example"),
                
