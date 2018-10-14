@@ -14,3 +14,5 @@ reshape2
 tibble
 pheatmap
 shinythemes
+ggplot2
+dendextend
