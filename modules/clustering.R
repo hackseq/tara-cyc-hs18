@@ -21,7 +21,7 @@ clustering_server = function(input,output,session,groups){
             }
             
             render_dendrogram <- function(dendrogram) {
-                dendrogram %<>% ggplot()
+                dendrogram %>% ggplot()
             }
             
             subset %>%
