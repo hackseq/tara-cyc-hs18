@@ -13,10 +13,7 @@ library(shinythemes)
 #library("leaflet")
 
 ui <- dashboardPage(
-    dashboardHeader(tags$li(img(src = 'tara_logo.png',
-                                  title = "Company Home", height = "30px"),
-                              style = "padding-top:10px; padding-bottom:10px;", class="dropdown"),
-                            title = "Viral Voyager"),
+    dashboardHeader(title = HTML('<center><img src = "tara_logo.png", height="40", width="40">Viral Voyager</center>')),
     dashboardSidebar(
         sidebarMenu(
             menuItem("Welcome", tabName = "welcome", icon = icon("home")),
@@ -85,75 +82,77 @@ ui <- dashboardPage(
                     fluidPage(theme = shinytheme("yeti"),
                         flowLayout(
                             
-                        wellPanel(img(src ="arjun.jpg", width="150", height="150", style="border-radius:50%"),
-                            p("Arjun Baghela "),
-                            icon(name="twitter", class = NULL, lib = "font-awesome"), p("Arjun's twitter"),
+                            wellPanel(img(src ="arjun.jpg", width="150", height="150", style="border-radius:50%"),
+                                      tags$strong("Arjun Baghela"), 
+                                      
+                                      tags$br(), icon(name="twitter", class = NULL, lib = "font-awesome"), "@arjunsbaghela",
+                                      
+                                      tags$br(), icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/abaghela", "abaghela")
+                                      
+                            ),
                             
-                            icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/abaghela", "abaghela")
-                          
-                        ),
-                        
-                        
-                        wellPanel(img(src ="ogan.jpg", width="150", height="150", style="border-radius:50%"),
-                                  p("Burak Ogan Mancarci"),
-                                  icon(name = 'twitter',class = NULL, lib = 'font-awesome'),tags$a(href="https://twitter.com/OganM", "@oganm"),
-                                  br(),
-                                  icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/oganm", "oganm")
-                        ),
-                        
-                        
-                        wellPanel(img(src ="dan.jpg", width="150", height="150", style="border-radius:50%",  alt="Dan", p("Dan Fornika")),
-                                  icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/dfornika", "dfornika")
-                        ),
-                        
-                        
-  
-                        wellPanel(img(src ="kristen.jpg", width="150", height="150", style="border-radius:50%"),
-                        p("Kristen Gray"),
-                        
-                        icon(name="twitter", class = NULL, lib = "font-awesome"), p("@agrayowl"),
-                        icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/klgray25", "klgray25") 
-                        ),
-                        
-                        wellPanel(img(src ="Olga.jpg", width="130", height="150", style="border-radius:50%"),
-                                  p("Olga Solodova"),
-                                  icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/ ", "??")
-                        ),
-                        
-                        
-                        wellPanel(img(src ="javier.jpg", width="150", height="150", style="border-radius:50%"),
-                                  p("Javier J. Castillo Arnemann"),
-                                  icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/yavyx ", "yavyx")
-                        ),
-                        
-                        wellPanel(img(src ="jasmine.jpg", width="150", height="150", style="border-radius:50%"),
-                                  p("Jasmine Lai"),
-                            icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/laijasmine", "laijasmine")
-                        ),
-                        
-                        
-                        wellPanel(img(src ="tony.jpg", width="150", height="150", style="border-radius:50%"),
-                                  p("Tony Shen"),
-                                  icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/ ", " ??")
-                        ),
-                        
-                        
-                        wellPanel(img(src ="heather head shot.jpg", width="150", height="150", style="border-radius:50%"),
-                                  p("Heather Van Tassel"),
-                                  icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/heathervant", "heathervant")
-                        ),
-                        
-                        wellPanel(img(src ="amyworkID_pic.jpg", width="120", height="150", style="border-radius:50%"),
-                                  p("Amy Zheng"),
-                                  icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/awlzhng", "awlzhng") 
-                        ),
-                        
-                        
-                        wellPanel(img(src ="kevin.JPG", width="150", height="150", style="border-radius:50%"), 
-                                  p("Kevin Lam"),
-                                  icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/KlamChowder1", "KlamChowder1") 
-                        )
-                        
+                            
+                            wellPanel(img(src ="ogan.jpg", width="150", height="150", style="border-radius:50%"),
+                                      p("B. Ogan Mancarci"),
+                                      icon(name = 'twitter',class = NULL, lib = 'font-awesome'),tags$a(href="https://twitter.com/OganM", "@oganm"),
+                                      br(),
+                                      icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/oganm", "oganm")
+                            ),
+                            
+                            
+                            wellPanel(img(src ="dan.jpg", width="150", height="150", style="border-radius:50%",  alt="Dan"),
+                                      tags$strong("Dan Fornika"),
+                                      tags$br(), icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/dfornika", "dfornika")
+                            ),
+                            
+                            
+                            
+                            wellPanel(img(src ="kristen.jpg", width="150", height="150", style="border-radius:50%"),
+                                      tags$b("Kristen Gray"), 
+                                      
+                                      tags$br(), icon(name="twitter", class = NULL, lib = "font-awesome"), "@agrayowl",
+                                      tags$br(), icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/klgray25", "klgray25") 
+                            ),
+                            
+                            wellPanel(img(src ="Olga.jpg", width="130", height="150", style="border-radius:50%"),
+                                      tags$br(), tags$strong("Olga Solodova"), tags$br(""),
+                                      icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/ ", "??")
+                            ),
+                            
+                            
+                            wellPanel(img(src ="javier.jpg", width="150", height="150", style="border-radius:50%"),
+                                      tags$strong("Javier J. Castillo Arnemann"), tags$br(),
+                                      icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/yavyx ", "yavyx")
+                            ),
+                            
+                            wellPanel(img(src ="jasmine.jpg", width="150", height="150", style="border-radius:50%"),
+                                      tags$strong("Jasmine Lai"),tags$br(),
+                                      icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/laijasmine", "laijasmine")
+                            ),
+                            
+                            
+                            wellPanel(img(src ="tony.jpg", width="150", height="150", style="border-radius:50%"),
+                                      tags$strong("Tony Shen"), tags$br(),
+                                      icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/ ", " ??")
+                            ),
+                            
+                            
+                            wellPanel(img(src ="heather head shot.jpg", width="150", height="150", style="border-radius:50%"),
+                                      tags$strong("Heather Van Tassel"),tags$br(),
+                                      icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/heathervant", "heathervant")
+                            ),
+                            
+                            wellPanel(img(src ="amyworkID_pic.jpg", width="120", height="150", style="border-radius:50%"),
+                                      tags$br(), tags$strong("Amy Zheng"), tags$br(),
+                                      icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/awlzhng", "awlzhng") 
+                            ),
+                            
+                            
+                            wellPanel(img(src ="kevin.JPG", width="150", height="150", style="border-radius:50%"), 
+                                      tags$strong("Kevin Lam"),
+                                      tags$br(),icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/KlamChowder1", "KlamChowder1") 
+                            )
+
                         
                         #titlePanel("example"),
                
