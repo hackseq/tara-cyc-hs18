@@ -10,7 +10,8 @@
 library(shiny)
 library(shinydashboard)
 library(shinythemes)
-#library("leaflet")
+
+
 
 ui <- dashboardPage(
     dashboardHeader(title = HTML('<center><img src = "tara_logo.png", height="40", width="40">Viral Voyager</center>')),
@@ -73,8 +74,7 @@ ui <- dashboardPage(
                     )),
             
             tabItem(tabName="futuredirections",
-                    h5 ('Future Directions'),
-                    img(src = "tara_logo.png", height="80", width="80", align="middle")),
+                    future_ui()),
                         
     
             
