@@ -18,5 +18,8 @@ shinyServer(function(input, output,session) {
     groups = callModule(group_server,'group',mapOut$group,tableOut$group,mapOrTable)
     
     callModule(test_analysis_server, 'tana',groups)
+    
+    callModule(clustering_server, 'clustering', groups)
+    
 
 })

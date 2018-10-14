@@ -70,7 +70,9 @@ ui <- dashboardPage(
             tabItem(tabName="analysis",
                     tabsetPanel(
                         tabPanel('Test Analysis',
-                                 test_analysis_ui('tana'))
+                                 test_analysis_ui('tana')),
+                        tabPanel('Clustering',
+                                 clustering_ui('clustering'))
                     )),
             
             tabItem(tabName="futuredirections",
