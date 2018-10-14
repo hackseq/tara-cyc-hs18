@@ -10,13 +10,11 @@
 library(shiny)
 library(shinydashboard)
 library(shinythemes)
-#library("leaflet")
+
+
 
 ui <- dashboardPage(
-    dashboardHeader(tags$li(img(src = 'tara_logo.png',
-                                  title = "Company Home", height = "30px"),
-                              style = "padding-top:10px; padding-bottom:10px;", class="dropdown"),
-                            title = "Viral Voyager"),
+    dashboardHeader(title = HTML('<center><img src = "tara_logo.png", height="40", width="40">Viral Voyager</center>')),
     dashboardSidebar(
         sidebarMenu(
             menuItem("Welcome", tabName = "welcome", icon = icon("home")),
@@ -69,74 +67,19 @@ ui <- dashboardPage(
             
             tabItem(tabName="analysis",
                     tabsetPanel(
-                        tabPanel('Test Analysis',
+                        tabPanel('Heatmap',
                                  test_analysis_ui('tana')),
                         tabPanel('Clustering',
                                  clustering_ui('clustering'))
                     )),
             
             tabItem(tabName="futuredirections",
-                    h5 ('Future Directions'),
-                    img(src = "tara_logo.png", height="80", width="80", align="middle")),
+                    future_ui()),
                         
     
             
             tabItem(tabName="members", h1('Meet the Team'), 
-                    fluidPage(theme = shinytheme("yeti"),
-                        flowLayout(
-                        wellPanel(img(src ="arjun.jpg", width="150", height="150", style="border-radius:50%"),
-                            p("Arjun Baghela "),
-                            icon(name="twitter", class = NULL, lib = "font-awesome"), p("Arjun's twitter"),
-                            
-                            icon(name="github", class = NULL, lib = "font-awesome"), p("abaghela")
-                        ),
-                        
-                        
-                        
-                        wellPanel(img(src ="dan.jpg", width="150", height="150", style="border-radius:50%",  alt="Dan")
-                        ),
-                        
-                        
-  
-                        wellPanel(img(src ="kristen.jpg", width="150", height="150", style="border-radius:50%"),
-                        p("Kristen Grey"),
-                        
-                        icon(name="twitter", class = NULL, lib = "font-awesome"), p("@agrayowl"),
-                        
-                        icon(name="github", class = NULL, lib = "font-awesome"), p("klgray25")
-                        ),
-                        
-                        wellPanel(img(src ="jasmine.jpg", width="150", height="150", style="border-radius:50%"),
-                                  p("Jasmine Lai"),
-                            icon(name="github", class = NULL, lib = "font-awesome"), p("laijasmine")
-                        ),
-                        
-                        
-                        wellPanel(img(src ="tony.jpg", width="150", height="150", style="border-radius:50%"),
-                                  p("Tony Shen"),
-                                  icon(name="github", class = NULL, lib = "font-awesome"), p("Tony's git")
-                        ),
-                        
-                        
-                        wellPanel(img(src ="heather head shot.jpg", width="150", height="150", style="border-radius:50%")
-                                  
-                        ),
-                        
-                        
-                        
-                        #titlePanel("example"),
-                        wellPanel("example"),
-                       #load.image(https://hackseq18.slack.com/files/UD6SDLFNH/FDD10G6M6/image_from_ios.jpg),
-                       wellPanel("example"),
-            
-            
-                       wellPanel("example")
-                       
-                        
-                        )
-                        
-                    )
-                    
+                    team_ui()
             )
                     
             

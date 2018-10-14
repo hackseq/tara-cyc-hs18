@@ -1,0 +1,55 @@
+---
+title: "analysis"
+author: "Jasmine"
+date: '2018-10-14'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+#loading libraries
+library(tidyverse)
+library(here)
+library(plotly)
+
+```
+
+These are interactive plots. Please select an area of the plot you 
+
+Following plots were generated using the df_MASTERTABLE dataset
+RPKM and ORF values by different georegions
+```{r, echo=FALSE, message=FALSE}
+
+df <- read_tsv(here("data/df_MASTERTABLE.txt"))
+
+geo_group <- group_by(df, GEOREGION, SAMPLE) %>% 
+    summarise(rpkm = sum(RPKM), orf = sum(ORF_COUNT))
+by_geo <- group_by(geo_group, GEOREGION) %>%
+    summarise(samples = n(), rpkm = sum(rpkm), orf = sum(orf))
+
+sample_geo <- mutate(by_geo,
+                     rpkm_sample = rpkm /samples,
+                     orf_sample = orf / samples)
+
+plot_ly(sample_geo,
+        x = sample_geo$GEOREGION,
+        y= sample_geo$rpkm_sample,
+        name = "RPKM Count",
+        type = "bar") %>% 
+    add_trace(y = sample_geo$orf_sample, name = "ORF Count") %>% 
+    layout(barmode = "group")
+
+```
+
+```{r  echo=FALSE}
+pwy <- group_by(df, LEVEL1, LEVEL2, LEVEL3)
+plot_ly(pwy, x = pwy$LEVEL1,
+        type = 'histogram')
+plot_ly(pwy, x = pwy$LEVEL3,
+        type = 'histogram')
+```
+
+```{r}
+biome <- group_by(df,BIOME) %>% 
+    summarise(total = mean(RPKM))
+```
+
