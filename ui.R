@@ -96,6 +96,8 @@ ui <- dashboardPage(
                         
                         wellPanel(img(src ="ogan.jpg", width="150", height="150", style="border-radius:50%"),
                                   p("Burak Ogan Mancarci"),
+                                  icon(name = 'twitter',class = NULL, lib = 'font-awesome'),tags$a(href="https://twitter.com/OganM", "@oganm"),
+                                  br(),
                                   icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/oganm", "oganm")
                         ),
                         
