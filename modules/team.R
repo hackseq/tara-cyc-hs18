@@ -36,7 +36,7 @@ team_ui = function(){
                       
                       wellPanel(img(src ="Olga.jpg", width="130", height="150", style="border-radius:50%"),
                                 tags$br(), tags$strong("Olga Solodova"), tags$br(""),
-                                icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/ ", "??")
+                                icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/solodova", "solodova")
                       ),
                       
                       
