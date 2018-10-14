@@ -13,7 +13,7 @@ library(shinythemes)
 #library("leaflet")
 
 ui <- dashboardPage(
-    dashboardHeader(title = "TaraCyc Viral Voyager"),
+    dashboardHeader(title = "Viral Voyager"),
     dashboardSidebar(
         sidebarMenu(
             menuItem("Welcome", tabName = "welcome", icon = icon("home")),
