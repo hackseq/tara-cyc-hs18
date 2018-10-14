@@ -1,13 +1,28 @@
 map_ui = function(id){
     ns = NS(id)
     tagList(
-        actionButton(ns('select_group'),icon = icon('save'), label = 'Select Group'),
-        textInput(ns('group_name'), label = 'Name Group',width = 200),
+        fluidRow(
+            column(6,
+                   div(style="display:inline-block", actionButton(ns('select_group'),icon = icon('save'), label = 'Select Group')),
+                   div(style="display:inline-block", textInput(ns('group_name'), label = 'Name Group',width = 200))
+            ),
+            column(4),
+            column(2,downloadButton(style = "display:inline-block float:right",outputId = ns('data_down'),label = 'Download Selection'))),
         editModUI(ns('map_edit'), height = 600)
     )
 }
 
 map_server = function(input,output,session, query_table){
+    
+    downloadPress = reactiveVal(value = 0)
+    
+    output$data_down = downloadHandler(
+        filename = 'voyagerdata.tsv',
+        content = function(file){
+            downloadPress(downloadPress()+1)
+            write_tsv(outGroup()$subset,file)
+        }
+    )
     
     map = reactive({
         df = query_table()
@@ -47,7 +62,7 @@ map_server = function(input,output,session, query_table){
     })
     
     outGroup = reactive({
-        if(input$select_group >= 1 )
+        if(input$select_group >= 1 | downloadPress() >= 1)
         isolate({
             if(is.null(mapSelection()$finished)){
                 out = query_table()
@@ -81,7 +96,15 @@ map_server = function(input,output,session, query_table){
         })
     
     
-    return(list(group = outGroup,sample = outSample))
+    sendGroupOut = reactive({
+        if(input$select_group >= 1){
+            isolate({
+                outGroup()
+            })
+        }
+    })
+    
+    return(list(group = sendGroupOut,sample = outSample))
     
 }
 
@@ -120,7 +143,7 @@ editModEdit = function (input, output, session, leafmap, targetLayerId = NULL,
         if (any(unlist(input[[EVT_DRAW]]$geometry$coordinates) < 
                 -180) || any(unlist(input[[EVT_DRAW]]$geometry$coordinates) > 
                              180)) 
-            insane_longitude_warning()
+            mapedit:::insane_longitude_warning()
         featurelist$finished <- c(featurelist$finished, list(input[[EVT_DRAW]]))
     })
     shiny::observeEvent(input[[EVT_EDIT]], {
