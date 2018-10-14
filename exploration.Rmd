@@ -42,7 +42,7 @@ dataset %>%
 cenf <- filter(dataset, SAMPLE == "cenf")
 
 #Check OMZ depths
-filter(dataset, DEPTH_OMZ == "OMZ") %>% select(DEPTHM, DEPTH_OMZ, DEPTH)
+depths <- filter(dataset, DEPTH_OMZ == "OMZ") %>% select(DEPTHM, DEPTH_OMZ, DEPTH)
 
 #Depth heatmap
 dataset %>%
@@ -114,7 +114,11 @@ level3_p <- samples %>%
        theme_classic() +
        theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 5)) 
 
+level1_p
 
+level2_p
+
+level3_p
 
 
 ```
