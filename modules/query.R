@@ -40,7 +40,10 @@ query_ui = function(id){
                                              "Pacific Westerlies"="Pacific_Westerlies",
                                              "MULTI"="MULTI"), multiple=TRUE),
                width = 6),
-        column(sliderInput(ns("RPKM"), label= "RPKM", min = 0, max = 16000, value = c(0, 16000)), width = 12)
+        column(sliderInput(ns("RPKM"), label= "RPKM", min = 0, max = 16000, value = c(0, 16000)), width = 12),
+        column(checkboxGroupInput(ns("isViral"), label = "Viral/Bacterial Samples",
+                                  choices = list("Viral" = "viral", "Bacterial"="bacterial"),
+                                  multiple=TRUE, width=12))
     )
 }
 
@@ -68,6 +71,15 @@ query_server = function(input,output,session,tara_data, query_table){
         if (!is.null(input$DEPTHSlider) && input$DEPTHSlider != '') {
             filtered_df <- filter(filtered_df, DEPTH <= max(input$DEPTHSlider) & DEPTH >= min(input$DEPTHSlider))
         }
+        if (!is.null(input$isViral) && input$isViral != "") {
+            viral <- "viral"
+            bacterial <- "bacterial"
+            isViral <- viral%in%(input$isViral)
+            isBacterial <- bacterial%in%(input$isViral)
+            selection <- c(isViral, isBacterial)
+            filtered_df <- filter(filtered_df, virus%in%selection)
+        }
+        
         query_table(filtered_df)
     })
     
