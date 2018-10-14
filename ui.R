@@ -9,6 +9,8 @@
 
 library(shiny)
 library(shinydashboard)
+library(shinythemes)
+#library("leaflet")
 
 ui <- dashboardPage(
     dashboardHeader(title = "TaraCyc Viral Voyager"),
@@ -68,9 +70,35 @@ ui <- dashboardPage(
             
             tabItem(tabName="futuredirections"),
             
-            tabItem(tabName="members"
-                     
+            tabItem(tabName="members", h1('Meet the Team'), 
+                    fluidPage(theme = shinytheme("yeti"),
+                        flowLayout(
+                        
+                          
+                        #titlePanel("example"),
+                        wellPanel("example"),
+                       #load.image(https://hackseq18.slack.com/files/UD6SDLFNH/FDD10G6M6/image_from_ios.jpg),
+                       wellPanel("example"),
+                       wellPanel("example"),
+                       wellPanel("example"),
+                       wellPanel("example"),
+                       wellPanel("example"),
+                       wellPanel("example"),
+                       wellPanel("example"),
+                       wellPanel("example"),
+                       wellPanel("example"),
+                       wellPanel("example")
+                       
+                        
+                        )
+                        
+                    )
+                    
             )
+                    
+            
+                     
+            
             
         
         )
