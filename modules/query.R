@@ -17,12 +17,11 @@ query_ui = function(id){
         column(checkboxGroupInput(ns("TYPE"), label="Sample Type",
                                   choices = list("SINGLE"="SINGLE", "GOV"="GOV", "MULTI-GOV"="MULTI-GOV", "MULTI"="MULTI")), width = 2),
         column(checkboxGroupInput(ns("DEPTH"),label = "Depth", 
-                                  choices = list("DCM"="DCM",
-                                                 "SRF"="SRF",
-                                                 "MES"="MES",
-                                                 "MIX"="MIX",
+                                  choices = list("DCM (17-188m)"="DCM",
+                                                 "SRF (5m)"="SRF",
+                                                 "MES (250-1000m)"="MES",
+                                                 "MIX (2-140m)"="MIX",
                                                  "MULTI"="MULTI")), width = 2),
-        column(textInput(ns("DEPTHSlider"), label="DepthSlider"), width = 2),
         column(textInput(ns("PWY_NAME"), label = "Pathway Name"), width = 6),
         column(selectizeInput(ns("GEOREGION"), label = "Geo Region",
                               choices = list("Atlantic Westerlies"="Atlantic_Westerlies",
@@ -67,9 +66,6 @@ query_server = function(input,output,session,tara_data, query_table){
         }
         if (!is.null(input$GEOREGION) && input$GEOREGION != "") {
             filtered_df <- filter(filtered_df, GEOREGION%in%(input$GEOREGION))
-        }
-        if (!is.null(input$DEPTHSlider) && input$DEPTHSlider != '') {
-            filtered_df <- filter(filtered_df, DEPTH <= max(input$DEPTHSlider) & DEPTH >= min(input$DEPTHSlider))
         }
         if (!is.null(input$isViral) && input$isViral != "") {
             viral <- "viral"
