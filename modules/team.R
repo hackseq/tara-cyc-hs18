@@ -34,7 +34,7 @@ team_ui = function(){
                                 tags$br(), icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/klgray25", "klgray25") 
                       ),
                       
-                      wellPanel(img(src ="Olga.jpg", width="130", height="150", style="border-radius:50%"),
+                      wellPanel(img(src ="olga.jpg", width="130", height="150", style="border-radius:50%"),
                                 tags$br(), tags$strong("Olga Solodova"), tags$br(""),
                                 icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/solodova", "solodova")
                       ),
@@ -45,7 +45,7 @@ team_ui = function(){
                                 icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/yavyx ", "yavyx")
                       ),
                       
-                      wellPanel(img(src ="jasmine.jpg", width="150", height="150", style="border-radius:50%"),
+                      wellPanel(img(src ="jasmine.JPG", width="150", height="150", style="border-radius:50%"),
                                 tags$strong("Jasmine Lai"),tags$br(),
                                 icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/laijasmine", "laijasmine")
                       ),
