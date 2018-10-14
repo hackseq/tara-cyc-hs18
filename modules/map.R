@@ -19,7 +19,7 @@ map_server = function(input,output,session, query_table){
         m <- leaflet(data = samples) %>%
             addProviderTiles(providers$Esri.WorldImagery) %>% 
             # addTiles() %>%
-            setView(lng=12.491348, lat=41.902281 , zoom=6) %>% 
+            setView(lng=-10, lat=0 , zoom=2) %>% 
             addMarkers(lng = ~LONG,
                        lat = ~LAT ,
                        clusterOptions = markerClusterOptions()) 
