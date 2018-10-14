@@ -21,3 +21,13 @@
 .welcomebox {
     text-align: center;
 }
+
+.irs-from, .irs-to, .irs-single {
+    background: #22646e;
+}
+
+.irs-bar {
+    background: #22646e;
+    border-top-color: #22646e;
+    border-bottom-color: #22646e;
+}
