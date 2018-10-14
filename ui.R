@@ -69,7 +69,7 @@ ui <- dashboardPage(
             
             tabItem(tabName="analysis",
                     tabsetPanel(
-                        tabPanel('Test Analysis',
+                        tabPanel('Heatmap',
                                  test_analysis_ui('tana')),
                         tabPanel('Clustering',
                                  clustering_ui('clustering'))

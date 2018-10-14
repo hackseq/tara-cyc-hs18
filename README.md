@@ -1,9 +1,4 @@
-Microbial community metabolism in oceans drives biogeochemical cycling through vast networks of metabolic and gene transfer. Many global consortia have been created to characterize the role of viruses in various ocean phenomena, mostly through metagenomic shotgun sequencing and bioinformatic analysis. Several of these studies are available for analysis online, however little information has been made to aggregate this information and provide consistent annotation of metabolic pathways present. Our goal at Hackseq was to further characterize ocean viromes globally using all publicly available data through novel pathway-centric approaches derived by the Hallam Lab at UBC. This has allowed for a unified database of ocean viromes, allowing for the identification of known and novel metabolic hotspots. 
-
-Considering the complexity and extent of data collected, our group created an R Shiny application to provide users an intuitive platform to explore and analyze this data. Our application's main feature, a map displaying sample collection locations, allows users to select samples and obtain all relevant information collected, including location temperature and salinity, depth, and metabolic pathway abundance. To give users the ability to compare the metabolic activity various samples, an analysis feature was created. Heatmaps of pathway abundance and sample clustering are currently available for comparison, allowing trends to be uncovered. Ultimately, our application provides a platform for researchers to start generating hypotheses for future sample expeditions or metabolic pathway investigations. Of equal importance, our interface design and straightforward analysis methods makes the application available to individuals interested in simply playing with the data to obtain a greater appreciation and understanding of the complexities of ocean viromes.  
-
-
-# TaraCyc
+# Viral Voyager
 
 TaraCyc contains the first ever large-scale mapping of viral metabolomics data collected from ocean environments around the world. The Tara Oceans Project travelled worldwide collecting water samples for shotgun metagenomic sequencing. This genomic data has been mapped to metabolomic pathways. Recently, viruses have been shown to encode proteins that interact with host metabolic pathways in ways not previously explored, such as a set of cyanophage that modified photosynthetic activity in infected cyanobacteria in order to promote viral replication [(Thompson et al)](http://www.pnas.org/content/pnas/108/39/E757.full.pdf).
 
@@ -48,8 +43,8 @@ R
 ### Data Explanation
 
 #### Parameters To Filter With
-* Sample: Sample IDs begin with c (bacterial fraction), ERR (viral fraction), or F (combined)
-* Sample Type: SINGLE (only one sample), MULTI (multiple samples analysed together)
+* Sample: Sample IDs begin with c (bacterial fraction), ERR (viral fraction), or F (combined fractions)
+* Sample Type: SINGLE (only one sample), MULTI (multiple samples analysed together), GOV (single viral sample), GOV-MULTI (multiple viral samples)
 * Depth (categorical values that describe the functional depth - metres below surface vary by environment):
   * DCM - deep chlorophyll maximum
   * SRF - surface water layer
