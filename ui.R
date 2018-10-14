@@ -9,6 +9,8 @@
 
 library(shiny)
 library(shinydashboard)
+library(shinythemes)
+#library("leaflet")
 
 ui <- dashboardPage(
     dashboardHeader(title = "TaraCyc Viral Voyager"),
@@ -28,7 +30,8 @@ ui <- dashboardPage(
         ),
         tabItems(
             tabItem(tabName="welcome",
-                    welcome_ui()),
+                    welcome_ui(),
+                    img(src = "tara_logo.png", height="140", width="140", align="middle")),
             
             tabItem(tabName="map",
                 h1('Map of Viral Metabolic Pathways'),
@@ -66,11 +69,41 @@ ui <- dashboardPage(
                                  test_analysis_ui('tana'))
                     )),
             
-            tabItem(tabName="futuredirections"),
+            tabItem(tabName="futuredirections",
+                    h5 ('Future Directions'),
+                    img(src = "tara_logo.png", height="80", width="80", align="middle")),
+                        
+    
             
-            tabItem(tabName="members"
-                     
+            tabItem(tabName="members", h1('Meet the Team'), 
+                    fluidPage(theme = shinytheme("yeti"),
+                        flowLayout(
+                        
+                          
+                        #titlePanel("example"),
+                        wellPanel("example"),
+                       #load.image(https://hackseq18.slack.com/files/UD6SDLFNH/FDD10G6M6/image_from_ios.jpg),
+                       wellPanel("example"),
+                       wellPanel("example"),
+                       wellPanel("example"),
+                       wellPanel("example"),
+                       wellPanel("example"),
+                       wellPanel("example"),
+                       wellPanel("example"),
+                       wellPanel("example"),
+                       wellPanel("example"),
+                       wellPanel("example")
+                       
+                        
+                        )
+                        
+                    )
+                    
             )
+                    
+            
+                     
+            
             
         
         )
