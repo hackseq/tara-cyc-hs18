@@ -1,11 +1,9 @@
 ---
-title: "analysis"
-author: "Jasmine"
-date: '2018-10-14'
+title: "Analysis Overview"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 #loading libraries
 library(tidyverse)
 library(here)
@@ -13,11 +11,12 @@ library(plotly)
 
 ```
 
-These are interactive plots. Please select an area of the plot you 
+These are interactive plots. Please select an area of the plot you would like to zoom in on.
 
-Following plots were generated using the df_MASTERTABLE dataset
-RPKM and ORF values by different georegions
-```{r, echo=FALSE, message=FALSE}
+Following plots were generated using the df_MASTERTABLE dataset.
+
+RPKM and ORF values per sample by different georegions
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 
 df <- read_tsv(here("data/df_MASTERTABLE.txt"))
 
@@ -40,7 +39,8 @@ plot_ly(sample_geo,
 
 ```
 
-```{r  echo=FALSE}
+The frequencies of the Level 1 pathways present 
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 pwy <- group_by(df, LEVEL1, LEVEL2, LEVEL3)
 plot_ly(pwy, x = pwy$LEVEL1,
         type = 'histogram')
@@ -52,7 +52,6 @@ filter_polar <- filter(rpkmfilter, BIOME == "Polar Biome")
 filter_trades <- filter(rpkmfilter, BIOME == "Trades Biome")
 filter_westerlies <- filter(rpkmfilter, BIOME == "Westerlies Biome")
 
-plot_ly(rpkmfilter, x = ~LEVEL1, type = "histogram") %>% layout(title = "Frequency of Level 1 Pathways in all biomes")
 
 p1 <- plot_ly(filter_coastal, x = ~LEVEL1, type = "histogram", name ="Coastal") %>% layout(title = "Frequency of Level 1 Pathways in the Coastal Biome")
 p2 <- plot_ly(filter_polar, x = ~LEVEL1, type = "histogram", name ="Polar") %>% layout(title = "Frequency of Level 1 Pathways in the Polar Biome")
@@ -61,17 +60,12 @@ p4 <- plot_ly(filter_westerlies, x = ~LEVEL1, type = "histogram", name ="Westerl
 
 subplot(p1, p2, p3, p4, nrows = 1, shareX = TRUE, shareY = TRUE) %>% layout(title = "Frequencies of Level 1 Pathways in the 4 Biomes")
 
+```
+Level 3 pathways in all biomes
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
 plot_ly(pwy, x = pwy$LEVEL3,
         type = 'histogram')
-```
-
-```{r}
-biome <- group_by(df,BIOME) %>% 
-    summarise(total = mean(RPKM))
-```
-
-```{r}
-
 ```
 
 
