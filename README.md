@@ -50,7 +50,7 @@ R
 
 #### Parameters To Filter With
 * Sample: Sample IDs begin with c (bacterial fraction), ERR (viral fraction), or F (combined fractions)
-* Sample Type: SINGLE (only one sample), MULTI (multiple samples analysed together)
+* Sample Type: SINGLE (only one sample), MULTI (multiple samples analysed together), GOV (single viral sample), GOV-MULTI (multiple viral samples)
 * Depth (categorical values that describe the functional depth - metres below surface vary by environment):
   * DCM - deep chlorophyll maximum
   * SRF - surface water layer
