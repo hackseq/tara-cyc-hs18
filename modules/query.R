@@ -17,12 +17,11 @@ query_ui = function(id){
         column(checkboxGroupInput(ns("TYPE"), label="Sample Type",
                                   choices = list("SINGLE"="SINGLE", "GOV"="GOV", "MULTI-GOV"="MULTI-GOV", "MULTI"="MULTI")), width = 2),
         column(checkboxGroupInput(ns("DEPTH"),label = "Depth", 
-                                  choices = list("DCM"="DCM",
-                                                 "SRF"="SRF",
-                                                 "MES"="MES",
-                                                 "MIX"="MIX",
+                                  choices = list("DCM (17-188m)"="DCM",
+                                                 "SRF (5m)"="SRF",
+                                                 "MES (250-1000m)"="MES",
+                                                 "MIX (2-140m)"="MIX",
                                                  "MULTI"="MULTI")), width = 2),
-        column(textInput(ns("DEPTHSlider"), label="DepthSlider"), width = 2),
         column(textInput(ns("PWY_NAME"), label = "Pathway Name"), width = 6),
         column(selectizeInput(ns("GEOREGION"), label = "Geo Region",
                               choices = list("Atlantic Westerlies"="Atlantic_Westerlies",
@@ -40,7 +39,10 @@ query_ui = function(id){
                                              "Pacific Westerlies"="Pacific_Westerlies",
                                              "MULTI"="MULTI"), multiple=TRUE),
                width = 6),
-        column(sliderInput(ns("RPKM"), label= "RPKM", min = 0, max = 16000, value = c(0, 16000)), width = 12)
+        column(sliderInput(ns("RPKM"), label= "RPKM", min = 0, max = 16000, value = c(0, 16000)), width = 12),
+        column(checkboxGroupInput(ns("isViral"), label = "Viral/Bacterial Samples",
+                                  choices = list("Viral" = "viral", "Bacterial"="bacterial")), 
+               width=12)
     )
 }
 
@@ -65,9 +67,17 @@ query_server = function(input,output,session,tara_data, query_table){
         if (!is.null(input$GEOREGION) && input$GEOREGION != "") {
             filtered_df <- filter(filtered_df, GEOREGION%in%(input$GEOREGION))
         }
-        if (!is.null(input$DEPTHSlider) && input$DEPTHSlider != '') {
-            filtered_df <- filter(filtered_df, DEPTH <= max(input$DEPTHSlider) & DEPTH >= min(input$DEPTHSlider))
+        if (!is.null(input$isViral) && input$isViral != "") {
+            add = c()
+            if("viral" %in%  input$isViral){
+                add = TRUE
+            }
+            if('bacterial' %in% input$isViral){
+                add = c(add,FALSE)
+            }
+            filtered_df <- filter(filtered_df, virus%in%add)
         }
+        
         query_table(filtered_df)
     })
     

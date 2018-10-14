@@ -45,9 +45,14 @@ R
 #### Parameters To Filter With
 * Sample: Sample IDs begin with c (bacterial fraction), ERR (viral fraction), or F (combined)
 * Sample Type: SINGLE (only one sample), MULTI (multiple samples analysed together)
-* Depth:
+* Depth (categorical values that describe the functional depth - metres below surface vary by environment):
   * DCM - deep chlorophyll maximum
   * SRF - surface water layer
   * MES - mesopelagic
   * Mix - 
-  * MULTI
+  * MULTI - 
+* Depthm - the depth in meters below the surface 
+* Pathway Level 1-3: Categories of metabolic activity at varying levels of granularity. Level 1 is the most broad and Level 3 is the most specific
+* Pathway Common Name: Single metabolic pathway
+* Geo Region: Broad geographic region from which 1+ samples were collected
+* RPKM - Reads per kilobase of transcript per million mapped reads (essentially, a normalized genomic abundance measure for genes involved in a given pathway)
