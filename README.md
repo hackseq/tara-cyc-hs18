@@ -1,8 +1,8 @@
 # TaraCyc
 
-TaraCyc contains the first ever large-scale mapping of viral metabolomics data collected from ocean environments around the world. The Tara Oceans Project travelled worldwide collecting water samples for shotgun metagenomic sequencing. This genomic data has been mapped to metabolomic pathways. Recently, viruses have been shown to encode proteins that interact with host metabolic pathways in ways not previously explored, such as a set of cyanophage that modified photosynthetic activity in infected cyanobacteria in order to promote viral replication [Thompson et al](http://www.pnas.org/content/pnas/108/39/E757.full.pdf).
+TaraCyc contains the first ever large-scale mapping of viral metabolomics data collected from ocean environments around the world. The Tara Oceans Project travelled worldwide collecting water samples for shotgun metagenomic sequencing. This genomic data has been mapped to metabolomic pathways. Recently, viruses have been shown to encode proteins that interact with host metabolic pathways in ways not previously explored, such as a set of cyanophage that modified photosynthetic activity in infected cyanobacteria in order to promote viral replication [(Thompson et al)](http://www.pnas.org/content/pnas/108/39/E757.full.pdf).
 
-The TaraCyc website contains all of this analysed metaviriome data with an interactive, user-friendly interface. The website can be accessed at: LINK.
+The TaraCyc website contains all of this analysed metaviriome data with an interactive, user-friendly interface. The website can be accessed at: [Tara Viral Voyager](http://oganm.com/shiny/taracyc/).
 
 ## Website Use
 
@@ -41,3 +41,13 @@ R
 4. Open the server.R script and select "Run App"
 
 ### Data Explanation
+
+#### Parameters To Filter With
+* Sample: Sample IDs begin with c (bacterial fraction), ERR (viral fraction), or F (combined)
+* Sample Type: SINGLE (only one sample), MULTI (multiple samples analysed together)
+* Depth:
+  * DCM - deep chlorophyll maximum
+  * SRF - surface water layer
+  * MES - mesopelagic
+  * Mix - 
+  * MULTI
