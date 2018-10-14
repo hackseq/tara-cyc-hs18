@@ -68,12 +68,14 @@ query_server = function(input,output,session,tara_data, query_table){
             filtered_df <- filter(filtered_df, GEOREGION%in%(input$GEOREGION))
         }
         if (!is.null(input$isViral) && input$isViral != "") {
-            viral <- "viral"
-            bacterial <- "bacterial"
-            isViral <- viral%in%(input$isViral)
-            isBacterial <- bacterial%in%(input$isViral)
-            selection <- c(isViral, isBacterial)
-            filtered_df <- filter(filtered_df, virus%in%selection)
+            add = c()
+            if("viral" %in%  input$isViral){
+                add = TRUE
+            }
+            if('bacterial' %in% input$isViral){
+                add = c(add,FALSE)
+            }
+            filtered_df <- filter(filtered_df, virus%in%add)
         }
         
         query_table(filtered_df)
