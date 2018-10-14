@@ -1,7 +1,6 @@
 query_ui = function(id){
     ns = NS(id)
     tagList(
-        actionButton(ns('debugButton'), 'pressme'),
         column(textInput(ns("SAMPLE"), label = "Sample"), 
                selectizeInput(ns("LEVEL1"),
                               label = "Pathway Type", 
