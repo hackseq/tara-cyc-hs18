@@ -4,7 +4,7 @@ clustering_ui = function(id){
 }
 
 clustering_server = function(input,output,session,groups){
-    outptu$clustering = renderPlot({
+    output$clustering = renderPlot({
         if (length(groups()) >= 1) {
             subset = groups()[[1]]
             
