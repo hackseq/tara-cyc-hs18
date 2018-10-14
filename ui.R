@@ -41,7 +41,15 @@ ui <- dashboardPage(
                 fluidRow(
                     box(
                         width = 12, solidHeader = TRUE,
-                        map_ui('map')
+                        tabsetPanel(id = 'map_or_table',
+                            tabPanel('Map View',
+                                     value = 'map',
+                                     map_ui('map')),
+                            tabPanel('Table View',
+                                     value = 'table',
+                                     table_ui('table'))
+                        )
+                        
                     )
                 ),
                 fluidRow(

@@ -7,10 +7,14 @@ sample_ui = function(id){
     )
 }
 
-sample_server = function(input,output,session,mapChoice){
+sample_server = function(input,output,session,mapChoice,tableChoice,map_or_table){
     
     output$sample_tab_render = renderUI({
-        df = mapChoice()
+        if(map_or_table()=='map'){
+            df = mapChoice()
+        } else if(map_or_table()=='table'){
+            df = tableChoice()
+        }
         df$SAMPLE %>% unique %>% lapply(function(sample){
             sample_subset = df %>% filter(SAMPLE==sample)
             # this assumes some properties are universal per sample
@@ -33,7 +37,11 @@ sample_server = function(input,output,session,mapChoice){
     # I separated this as a reactive becasue its used twice
     table_frame = reactive({
         if(!is.null(input$sample_tabs)){
-            df = mapChoice()
+            if(map_or_table()=='map'){
+                df = mapChoice()
+            } else if(map_or_table()=='table'){
+                df = tableChoice()
+            }
             df %<>% filter(SAMPLE == input$sample_tabs)
             return(df)
         }

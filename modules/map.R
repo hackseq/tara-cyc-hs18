@@ -81,7 +81,7 @@ map_server = function(input,output,session, query_table){
         })
     
     
-    return(list(outGroup = outGroup,outSample = outSample))
+    return(list(group = outGroup,sample = outSample))
     
 }
 
