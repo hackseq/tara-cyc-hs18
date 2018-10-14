@@ -5,7 +5,7 @@ for(depend in dependencies){
 }
 
 
-tara_data = read_tsv('data/df_MASTERTABLE.txt')
+tara_data = read_csv('data/df_MASTERTABLE_plus_metadata.csv')
 
 
 tara_data %<>% mutate(virus = !grepl('^c',SAMPLE))

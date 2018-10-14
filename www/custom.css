@@ -31,3 +31,11 @@
     border-top-color: #22646e;
     border-bottom-color: #22646e;
 }
+
+.h1 {
+    font-weight: bold;
+}
+
+a#map-data_down.btn.btn-default.shiny-download-link.shiny-bound-output {
+    float: right;
+}

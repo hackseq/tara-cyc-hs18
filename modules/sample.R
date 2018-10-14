@@ -24,7 +24,10 @@ sample_server = function(input,output,session,mapChoice,tableChoice,map_or_table
                      p(glue('LONG: {sample_subset$LONG[1]}')),
                      p(glue('Depth: {sample_subset$DEPTH[1]}')),
                      p(glue('Biome: {sample_subset$BIOME[1]}')),
-                     p(glue('Virus?: {sample_subset$virus[1]}')))
+                     p(glue('Virus?: {sample_subset$virus[1]}')),
+                     p(glue('Salinity: {sample_subset$salinity[1]}')),
+                     p(glue('Temperature: {sample_subset$temperature[1]}')),
+                     p(glue('Date: {sample_subset$date_collected[1]}')))
         }) -> tabs
 
         # here session$ns() is needed in order to make this element accessible to 

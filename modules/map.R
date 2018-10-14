@@ -6,8 +6,7 @@ map_ui = function(id){
                    div(style="display:inline-block", actionButton(ns('select_group'),icon = icon('save'), label = 'Select Group')),
                    div(style="display:inline-block", textInput(ns('group_name'), label = 'Name Group',width = 200))
             ),
-            column(4),
-            column(2,downloadButton(style = "display:inline-block float:right",outputId = ns('data_down'),label = 'Download Selection'))),
+            column(6,downloadButton(style = "display:inline-block float:right",outputId = ns('data_down'),label = 'Download Selection'))),
         editModUI(ns('map_edit'), height = 600)
     )
 }
