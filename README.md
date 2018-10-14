@@ -1,10 +1,4 @@
-Microbial community metabolism in oceans drives biogeochemical cycling through vast networks of metabolic and gene transfer. Although several expeditions to characterize viral communities in the ocean have been undertaken, previous studies did not standardize their methods to produce comparable data and, to our knowledge, no other study has produced a large-scale analysis of ocean viral metabolomics. Our goal at Hackseq was to further characterize global ocean viromes using publicly available data from the Hallam Lab produced through a novel pathway-centric approach. We have generated a unified database of ocean viromes that facilitates the identification of known and novel metabolic hotspots. 
-
-Considering the complexity and extent of data collected, our group created an R Shiny application to provide users an intuitive platform to explore and analyze this data. Our application's main feature, a map displaying sample collection locations, allows users to filter the samples into groups and download sample data. Each sample has rich metadata, including temperature, salinity, depth, and metabolic pathway abundance. An analysis feature gives users the ability to compare the metabolic activity of various samples. Heatmaps of pathway abundance and sample clustering are currently available for comparison, allowing visualization of sample trends. Ultimately, our application provides a platform for researchers to start generating hypotheses for future sample expeditions or metabolic pathway investigations. Of equal importance, our interface design and straightforward analysis methods makes the application available to individuals interested in simply playing with the data to obtain a greater appreciation and understanding of the complexities of ocean viromes.
- 
-
-
-# TaraCyc
+# Viral Voyager
 
 TaraCyc contains the first ever large-scale mapping of viral metabolomics data collected from ocean environments around the world. The Tara Oceans Project travelled worldwide collecting water samples for shotgun metagenomic sequencing. This genomic data has been mapped to metabolomic pathways. Recently, viruses have been shown to encode proteins that interact with host metabolic pathways in ways not previously explored, such as a set of cyanophage that modified photosynthetic activity in infected cyanobacteria in order to promote viral replication [(Thompson et al)](http://www.pnas.org/content/pnas/108/39/E757.full.pdf).
 
@@ -50,7 +44,7 @@ R
 
 #### Parameters To Filter With
 * Sample: Sample IDs begin with c (bacterial fraction), ERR (viral fraction), or F (combined fractions)
-* Sample Type: SINGLE (only one sample), MULTI (multiple samples analysed together)
+* Sample Type: SINGLE (only one sample), MULTI (multiple samples analysed together), GOV (single viral sample), GOV-MULTI (multiple viral samples)
 * Depth (categorical values that describe the functional depth - metres below surface vary by environment):
   * DCM - deep chlorophyll maximum
   * SRF - surface water layer
