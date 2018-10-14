@@ -42,8 +42,8 @@ query_ui = function(id){
                width = 6),
         column(sliderInput(ns("RPKM"), label= "RPKM", min = 0, max = 16000, value = c(0, 16000)), width = 12),
         column(checkboxGroupInput(ns("isViral"), label = "Viral/Bacterial Samples",
-                                  choices = list("Viral" = "viral", "Bacterial"="bacterial"),
-                                  multiple=TRUE, width=12))
+                                  choices = list("Viral" = "viral", "Bacterial"="bacterial")), 
+               width=12)
     )
 }
 
