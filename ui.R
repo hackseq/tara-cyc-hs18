@@ -70,7 +70,9 @@ ui <- dashboardPage(
             tabItem(tabName="analysis",
                     tabsetPanel(
                         tabPanel('Test Analysis',
-                                 test_analysis_ui('tana'))
+                                 test_analysis_ui('tana')),
+                        tabPanel('Clustering',
+                                 clustering_ui('clustering'))
                     )),
             
             tabItem(tabName="futuredirections",
@@ -82,14 +84,43 @@ ui <- dashboardPage(
             tabItem(tabName="members", h1('Meet the Team'), 
                     fluidPage(theme = shinytheme("yeti"),
                         flowLayout(
-                        wellPanel(img(src ="arjun.jpg", width="150", height="150", style="border-radius:50%", alt="Arjun Baghela", text="Arjun" ),
-                        p("Anjan")
+                        wellPanel(img(src ="arjun.jpg", width="150", height="150", style="border-radius:50%"),
+                            p("Arjun Baghela "),
+                            icon(name="twitter", class = NULL, lib = "font-awesome"), p("Arjun's twitter"),
+                            
+                            icon(name="github", class = NULL, lib = "font-awesome"), p("abaghela")
                         ),
-                        img(src ="dan.jpg", width="150", height="150", style="border-radius:50%",  alt="Dan"),
-                        img(src ="kristen.jpg", width="150", height="150", style="border-radius:50%"),
-                        img(src ="jasmine.jpg", width="150", height="150", style="border-radius:50%"),
-                        img(src ="tony.jpg", width="150", height="150", style="border-radius:50%"),
                         
+                        
+                        
+                        wellPanel(img(src ="dan.jpg", width="150", height="150", style="border-radius:50%",  alt="Dan")
+                        ),
+                        
+                        
+  
+                        wellPanel(img(src ="kristen.jpg", width="150", height="150", style="border-radius:50%"),
+                        p("Kristen Grey"),
+                        
+                        icon(name="twitter", class = NULL, lib = "font-awesome"), p("@agrayowl"),
+                        
+                        icon(name="github", class = NULL, lib = "font-awesome"), p("klgray25")
+                        ),
+                        
+                        wellPanel(img(src ="jasmine.jpg", width="150", height="150", style="border-radius:50%"),
+                                  p("Jasmine Lai"),
+                            icon(name="github", class = NULL, lib = "font-awesome"), p("laijasmine")
+                        ),
+                        
+                        
+                        wellPanel(img(src ="tony.jpg", width="150", height="150", style="border-radius:50%"),
+                                  p("Tony Shen"),
+                                  icon(name="github", class = NULL, lib = "font-awesome"), p("Tony's git")
+                        ),
+                        
+                        
+                        wellPanel(img(src ="heather head shot.jpg", width="150", height="150", style="border-radius:50%")
+                                  
+                        ),
                         
                         
                         

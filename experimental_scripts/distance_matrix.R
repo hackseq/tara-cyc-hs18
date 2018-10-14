@@ -19,5 +19,10 @@ create_dendrogram <- function(distance_matrix) {
 }
 
 render_dendrogram <- function(dendrogram) {
-    dendrogram %>% ggplot()
+    dendrogram %<>% ggplot()
 }
+
+tara_subset %>% 
+    calculate_distance_matrix() %>%
+    create_dendrogram() %>%
+    render_dendrogram()

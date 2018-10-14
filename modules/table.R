@@ -28,7 +28,7 @@ table_server = function(input,output,session, query_table){
     output$query_dt = DT::renderDataTable({
         df = query_table()
         
-        samples = df %>% select(SAMPLE,TYPE,DEPTH,LAT,LONG,BIOME,GEOREGION,virus) %>% unique
+        samples = df %>% select(SAMPLE,TYPE,DEPTH,LAT,LONG,BIOME,GEOREGION,salinity,temperature,date_collected,virus) %>% unique
     })
     
     outSample = reactive({
