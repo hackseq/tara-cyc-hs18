@@ -18,7 +18,8 @@ ui <- dashboardPage(
             menuItem("Map", tabName = "map", icon = icon("globe")),
             menuItem("Analysis", tabName = "analysis", icon = icon("flask")),
             menuItem("Future Directions", tabName = "futuredirections", icon = icon("arrow-circle-right")),
-            menuItem("Team Members", tabName = "members", icon = icon("user-circle-o"))
+            menuItem("Team Members", tabName = "members", icon = icon("user-circle-o")),
+            group_ui('group')
         )
     ),
     dashboardBody(

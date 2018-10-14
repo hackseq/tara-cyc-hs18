@@ -8,7 +8,7 @@ map_ui = function(id){
 }
 
 map_server = function(input,output,session, query_table){
-        
+    
     map = reactive({
         df = query_table()
         # I have removed the sample from here as it places points on top of each other
@@ -46,40 +46,43 @@ map_server = function(input,output,session, query_table){
 
     })
     
-    outGroup = observeEvent(input$select_group,{
-        if(!is.null(mapSelection()$finished)){
+    outGroup = reactive({
+        if(input$select_group >= 1 )
+        isolate({
+            if(is.null(mapSelection()$finished)){
+                out = query_table()
+            } else{
+                withProgress({
+                    query_table() %>% mutate(long = LONG, lat = LAT) %>% 
+                        select(long,lat) %>%as.matrix %>% st_multipoint() ->multipoint
+                    
+                    toIntersect = st_sf(st_cast(st_sfc(multipoint), "POINT"), query_table(), crs=4326)
+                    selection = mapSelection()$finished
+                    intersection = st_intersection(selection, toIntersect)
+                    
+                    out = intersection[,names(query_table())]
+                    
+                    if(nrow(out) == 0){
+                        out = query_table()
+                    }
+                },value = 1,message = 'Picking samples')
+
+            }
             
-        } else{
-            return(query_table)
-        }
-        query_table() %>% mutate(long = LONG, lat = LAT) %>% 
-            select(long,lat) %>%as.matrix %>% st_multipoint() ->multipoint
-        
-        toIntersect = st_sf(st_cast(st_sfc(multipoint), "POINT"), query_table(), crs=4326)
-        
-        # # make the coordinates a numeric matrix
-        # qk_mx <- data.matrix(quakes[,2:1])
-        # # convert the coordinates to a multipoint feature
-        # qk_mp <- st_multipoint(qk_mx)
-        # # convert the multipoint feature to sf
-        # qk_sf <- st_sf(st_cast(st_sfc(qk_mp), "POINT"), quakes, crs=4326)
-        
-        
-        
-        selection = mapSelection()$finished
-        intersection = st_intersection(selection, toIntersect)
-        
-        out = intersection[,names(query_table())]
-        
-        if(nrow(out) == 0){
-            return(query_table())
-        } else{
-            return(out)
-        }
-    })
+            if(is.null(input$group_name) | input$group_name == ''){
+                name = glue('unnamed ({length(unique(out$SAMPLE))} samples)')
+            } else{
+                name = input$group_name
+            }
+            return(list(name = name,
+                          subset = out %>% as.data.frame() %>% {.[names(query_table())]}))
+            
+        })
+        })
     
-    # return selected coordinates
+    
     return(list(outGroup = outGroup,outSample = outSample))
+    
 }
 
 
