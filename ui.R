@@ -78,20 +78,22 @@ ui <- dashboardPage(
             tabItem(tabName="members", h1('Meet the Team'), 
                     fluidPage(theme = shinytheme("yeti"),
                         flowLayout(
+                        img(src ="arjun.jpg", width="150", height="150", style="border-radius:50%" ),
                         
-                          
+                        img(src ="dan.jpg", width="150", height="150", style="border-radius:50%"),
+                        img(src ="kristen.jpg", width="150", height="150", style="border-radius:50%"),
+                        img(src ="jasmine.jpg", width="150", height="150", style="border-radius:50%"),
+                        img(src ="tony.jpg", width="150", height="150", style="border-radius:50%"),
+                        
+                        
+                        
+                        
                         #titlePanel("example"),
                         wellPanel("example"),
                        #load.image(https://hackseq18.slack.com/files/UD6SDLFNH/FDD10G6M6/image_from_ios.jpg),
                        wellPanel("example"),
-                       wellPanel("example"),
-                       wellPanel("example"),
-                       wellPanel("example"),
-                       wellPanel("example"),
-                       wellPanel("example"),
-                       wellPanel("example"),
-                       wellPanel("example"),
-                       wellPanel("example"),
+            
+            
                        wellPanel("example")
                        
                         
