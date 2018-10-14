@@ -35,7 +35,7 @@ ui <- dashboardPage(
             tabItem(tabName="welcome",
                     HTML('<center><img src = "tara_logo.png", height="240", width="240"></center>'),
                     welcome_ui()),
-                    #img(src = "tara_logo.png", height="80", width="80", align="middle")),
+                    
                     
             tabItem(tabName="map",
                 h1('Map of Viral Metabolic Pathways'),
