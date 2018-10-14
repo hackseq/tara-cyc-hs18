@@ -73,8 +73,7 @@ ui <- dashboardPage(
                     )),
             
             tabItem(tabName="futuredirections",
-                    h5 ('Future Directions'),
-                    img(src = "tara_logo.png", height="80", width="80", align="middle")),
+                    future_ui()),
                         
     
             
