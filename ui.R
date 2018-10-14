@@ -13,10 +13,7 @@ library(shinythemes)
 #library("leaflet")
 
 ui <- dashboardPage(
-    dashboardHeader(tags$li(img(src = 'tara_logo.png',
-                                  title = "Company Home", height = "30px"),
-                              style = "padding-top:10px; padding-bottom:10px;", class="dropdown"),
-                            title = "Viral Voyager"),
+    dashboardHeader(title = HTML('<center><img src = "tara_logo.png", height="40", width="40">Viral Voyager</center>')),
     dashboardSidebar(
         sidebarMenu(
             menuItem("Welcome", tabName = "welcome", icon = icon("home")),
