@@ -10,7 +10,8 @@
 library(shiny)
 library(shinydashboard)
 library(shinythemes)
-#library("leaflet")
+
+
 
 ui <- dashboardPage(
     dashboardHeader(title = HTML('<center><img src = "tara_logo.png", height="40", width="40">Viral Voyager</center>')),
@@ -81,7 +82,6 @@ ui <- dashboardPage(
                     fluidPage(theme = shinytheme("yeti"),
                         flowLayout(
                             
-                            
                             wellPanel(img(src ="arjun.jpg", width="150", height="150", style="border-radius:50%"),
                                       tags$strong("Arjun Baghela"), 
                                       
@@ -93,7 +93,9 @@ ui <- dashboardPage(
                             
                             
                             wellPanel(img(src ="ogan.jpg", width="150", height="150", style="border-radius:50%"),
-                                      tags$strong("Burak Ogan Mancarci"),
+                                      p("B. Ogan Mancarci"),
+                                      icon(name = 'twitter',class = NULL, lib = 'font-awesome'),tags$a(href="https://twitter.com/OganM", "@oganm"),
+                                      br(),
                                       icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/oganm", "oganm")
                             ),
                             
@@ -114,7 +116,7 @@ ui <- dashboardPage(
                             
                             wellPanel(img(src ="Olga.jpg", width="130", height="150", style="border-radius:50%"),
                                       tags$br(), tags$strong("Olga Solodova"), tags$br(""),
-                                      icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/ ", "??")
+                                      icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/solodova", "solodova")
                             ),
                             
                             
@@ -150,7 +152,7 @@ ui <- dashboardPage(
                                       tags$strong("Kevin Lam"),
                                       tags$br(),icon(name="github", class = NULL, lib = "font-awesome"), tags$a(href="https://github.com/KlamChowder1", "KlamChowder1") 
                             )
-                        
+
                         
                         #titlePanel("example"),
                
