@@ -60,7 +60,11 @@ ui <- dashboardPage(
                 )
             ),
             
-            tabItem(tabName="analysis"),
+            tabItem(tabName="analysis",
+                    tabsetPanel(
+                        tabPanel('Test Analysis',
+                                 test_analysis_ui('tana'))
+                    )),
             
             tabItem(tabName="futuredirections"),
             

@@ -42,7 +42,11 @@ sample_server = function(input,output,session,mapChoice,tableChoice,map_or_table
             } else if(map_or_table()=='table'){
                 df = tableChoice()
             }
-            df %<>% filter(SAMPLE == input$sample_tabs)
+            # this is needed because this reactive section is run before the tabs
+            # are updated.
+            if(!is.null(df)){
+                df %<>% filter(SAMPLE == input$sample_tabs)
+            }
             return(df)
         }
     })

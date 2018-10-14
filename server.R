@@ -15,7 +15,9 @@ shinyServer(function(input, output,session) {
     
     callModule(sample_server,'sample',mapOut$sample, tableOut$sample,mapOrTable)
     
-    callModule(group_server,'group',mapOut$group,tableOut$group,mapOrTable)
+    groups = callModule(group_server,'group',mapOut$group,tableOut$group,mapOrTable)
+    
+    callModule(test_analysis_server, 'tana',groups)
     
 
 })

@@ -10,3 +10,6 @@ shinydashboard
 glue
 mapedit
 sf
+reshape2
+tibble
+pheatmap

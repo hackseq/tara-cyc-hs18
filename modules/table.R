@@ -2,7 +2,7 @@ table_ui = function(id){
     ns = NS(id)
     tagList(
         actionButton(ns('select_group'),icon = icon('save'), label = 'Select Group'),
-        textInput(ns('group_name'), label = 'Name Group'),
+        textInput(ns('group_name'), label = 'Name Group',width = 200),
         DT::dataTableOutput(ns('query_dt'))
     )
 }
